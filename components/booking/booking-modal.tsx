@@ -10,23 +10,28 @@ interface BookingModalProps {
   isOpen: boolean
   onClose: () => void
 }
-
 const services = [
-  { id: "swedish-massage", name: "Swedish Massage", duration: "60 min", price: "$90" },
-  { id: "deep-tissue-massage", name: "Deep Tissue Massage", duration: "60 min", price: "$110" },
-  { id: "face-massage", name: "Face Massage", duration: "45 min", price: "$65" },
-  { id: "thai-massage", name: "Thai Massage", duration: "60 min", price: "$85" },
-  { id: "sports-massage", name: "Sports Massage", duration: "60 min", price: "$90" },
-  { id: "prenatal-massage", name: "Prenatal Massage", duration: "60 min", price: "$80" },
-  { id: "full-body-massage", name: "Full Body Massage", duration: "90 min", price: "$120" },
-  { id: "hot-stone-massage", name: "Hot Stone Massage", duration: "75 min", price: "$120" },
+  { id: "swedish-massage", name: "SWEDISH MASSAGE" },
+  { id: "deep-tissue-massage", name: "DEEP TISSUE MASSAGE" },
+  { id: "hot-stone-massage", name: "HOT STONE MASSAGE" },
+  { id: "sports-massage", name: "SPORTS MASSAGE" },
+  { id: "aromatherapy-massage", name: "AROMATHERAPY MASSAGE" },
+  { id: "nuru-massage", name: "NURU MASSAGE" },
 ]
 
+const bookingOptions = [
+  { id: "1-hour", duration: "1 HOUR", price: "$250.00" },
+  { id: "2-hours", duration: "2 HOURS", price: "$450.00" },
+  { id: "3-hours", duration: "3 HOURS", price: "$550.00" },
+  { id: "4-6-hours", duration: "4–6 HOURS", price: "$750.00" },
+  { id: "10-12-hours", duration: "10–12 HOURS (OVERNIGHT/DAY)", price: "$1,000.00" },
+]
 const timeSlots = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"]
 
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [step, setStep] = useState(1)
   const [selectedService, setSelectedService] = useState("")
+  const [selectedBooking, setSelectedBooking] = useState("")
   const [selectedDate, setSelectedDate] = useState("")
   const [selectedTime, setSelectedTime] = useState("")
   const [formData, setFormData] = useState({
@@ -37,6 +42,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+ 
 
   const handleSubmit = async () => {
     setIsSubmitting(true)
@@ -51,8 +57,10 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
     setSelectedService("")
     setSelectedDate("")
     setSelectedTime("")
+    setSelectedBooking("")
     setFormData({ name: "", email: "", phone: "", notes: "" })
     setIsSuccess(false)
+    
   }
 
   const handleClose = () => {
@@ -119,10 +127,30 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               <div className="bg-spa-beige/50 rounded-2xl p-6 text-left max-w-md mx-auto mb-8">
                 <h4 className="font-medium text-spa-brown mb-4">Appointment Details</h4>
                 <div className="space-y-2 text-sm">
-                  <p className="text-spa-brown/70">
-                    <span className="font-medium text-spa-brown">Service:</span>{" "}
-                    {services.find((s) => s.id === selectedService)?.name}
-                  </p>
+                   <p>
+  <span className="font-medium text-spa-brown">
+    Massage:
+  </span>{" "}
+  {services.find((s) => s.id === selectedService)?.name}
+</p>
+
+<p>
+  <span className="font-medium text-spa-brown">
+    Duration:
+  </span>{" "}
+  {bookingOptions.find(
+    (b) => b.id === selectedBooking
+  )?.duration}
+</p>
+
+<p>
+  <span className="font-medium text-spa-brown">
+    Price:
+  </span>{" "}
+  {bookingOptions.find(
+    (b) => b.id === selectedBooking
+  )?.price}
+</p>
                   <p className="text-spa-brown/70">
                     <span className="font-medium text-spa-brown">Date:</span> {selectedDate}
                   </p>
@@ -144,30 +172,57 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           ) : (
             <>
               {/* Step 1: Select Service */}
-              {step === 1 && (
-                <div>
-                  <h3 className="font-serif text-xl text-spa-brown mb-4">Select a Service</h3>
-                  <div className="grid gap-3">
-                    {services.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => setSelectedService(service.id)}
-                        className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all text-left ${
-                          selectedService === service.id
-                            ? "border-spa-orange bg-spa-orange/5"
-                            : "border-spa-beige hover:border-spa-orange/50"
-                        }`}
-                      >
-                        <div>
-                          <h4 className="font-medium text-spa-brown">{service.name}</h4>
-                          <p className="text-sm text-spa-brown/60">{service.duration}</p>
-                        </div>
-                        <span className="font-semibold text-spa-orange">{service.price}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+               {step === 1 && (
+  <div>
+    <h3 className="font-serif text-xl text-spa-brown mb-4">
+      SELECT A MASSAGE
+    </h3>
+
+    <div className="grid gap-3 mb-8">
+      {services.map((service) => (
+        <button
+          key={service.id}
+          onClick={() => setSelectedService(service.id)}
+          className={`p-4 rounded-xl border-2 transition-all text-left ${
+            selectedService === service.id
+              ? "border-spa-orange bg-spa-orange/5"
+              : "border-spa-beige hover:border-spa-orange/50"
+          }`}
+        >
+          <h4 className="font-medium text-spa-brown">
+            {service.name}
+          </h4>
+        </button>
+      ))}
+    </div>
+
+    <h3 className="font-serif text-xl text-spa-brown mb-4">
+      SELECT A DURATION
+    </h3>
+
+    <div className="grid gap-3">
+      {bookingOptions.map((option) => (
+        <button
+          key={option.id}
+          onClick={() => setSelectedBooking(option.id)}
+          className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all text-left ${
+            selectedBooking === option.id
+              ? "border-spa-orange bg-spa-orange/5"
+              : "border-spa-beige hover:border-spa-orange/50"
+          }`}
+        >
+          <span className="font-medium text-spa-brown">
+            {option.duration}
+          </span>
+
+          <span className="font-semibold text-spa-orange">
+            {option.price}
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+)}
 
               {/* Step 2: Select Date & Time */}
               {step === 2 && (
@@ -294,7 +349,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 {step < 3 ? (
                   <Button
                     onClick={() => setStep(step + 1)}
-                    disabled={(step === 1 && !selectedService) || (step === 2 && (!selectedDate || !selectedTime))}
+                    disabled={
+  (step === 1 &&
+    (!selectedService || !selectedBooking)) ||
+  (step === 2 &&
+    (!selectedDate || !selectedTime))
+}
                     className="bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full px-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Continue

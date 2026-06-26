@@ -3,25 +3,29 @@ import { Smile, Leaf, Dumbbell, Heart } from "lucide-react"
 const massageTypes = [
   {
     icon: Smile,
-    title: "FACE MASSAGE",
-    description: "Rejuvenating facial massage techniques that nourishes and lifts",
+    title: "SWEDISH MASSAGE",
+    description:
+      "A gentle, relaxing massage that improves circulation, relieves stress, and eases muscle tension.",
   },
   {
     icon: Leaf,
-    title: "THAI MASSAGE",
-    description: "Traditional Thai techniques that release tightness, promotes optimal flexibility",
+    title: "DEEP TISSUE MASSAGE",
+    description:
+      "Targets deeper muscle layers to release chronic tension, reduce pain, and improve mobility.",
   },
   {
     icon: Dumbbell,
     title: "SPORTS MASSAGE",
-    description: "Performance recovery massage designed to restore and optimize sports performance",
+    description:
+      "Designed to enhance athletic performance, prevent injuries, and speed up muscle recovery.",
   },
   {
     icon: Heart,
-    title: "PRENATAL MASSAGE",
-    description: "Gentle prenatal treatments designed to nurture expectant mothers & relax",
+    title: "HOT STONE MASSAGE",
+    description:
+      "Heated stones combined with therapeutic massage to melt away tension and promote deep relaxation.",
   },
-]
+];
 
 export default function MassageTypes() {
   return (

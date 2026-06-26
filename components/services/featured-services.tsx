@@ -3,29 +3,29 @@ import Image from "next/image"
 const services = [
   {
     image: "/woman-receiving-herbal-body-polish-spa-treatment-l.jpg",
-    title: "HERBAL BODY POLISH",
+    title: "SWEDISH MASSAGE",
     description:
-      "Gentle exfoliation, herbal blends to brighten, soften and purify the skin. Ideal for all skin types.",
+      "A gentle, relaxing full-body massage using long, flowing strokes to ease muscle tension, improve circulation, and promote overall relaxation.",
   },
   {
     image: "/woman-receiving-deep-sea-salt-glow-spa-treatment-m.jpg",
-    title: "DEEP SEA SALT GLOW",
+    title: "DEEP TISSUE MASSAGE",
     description:
-      "Infused with essential minerals, this treatment removes dullness and leaves your skin silky smooth.",
+      "A therapeutic massage that targets deeper layers of muscle and connective tissue to relieve chronic pain, stiffness, and muscle knots.",
   },
   {
     image: "/woman-with-facial-mask-sugar-cocoon-scrub-spa-trea.jpg",
-    title: "SUGAR COCOON SCRUB",
+    title: "HOT STONE MASSAGE",
     description:
-      "A rich sugar-based exfoliation that hydrates and renews. Perfect for sensitive skin and gentle care.",
+      "A soothing massage using heated stones to relax muscles, improve blood flow, reduce stress, and provide deep comfort.",
   },
   {
     image: "/woman-receiving-aromatic-body-buff-massage-spa-tre.jpg",
-    title: "AROMATIC BODY BUFF",
+    title: "SPORTS MASSAGE",
     description:
-      "Customized for your unique skin needs, this therapy smooths and revitalizes while relaxing.",
+      "A performance-focused massage designed to prevent injuries, enhance flexibility, speed recovery, and reduce muscle soreness for active individuals.",
   },
-]
+];
 
 export default function FeaturedServices() {
   return (

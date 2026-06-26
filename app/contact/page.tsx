@@ -42,12 +42,12 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+      details: ["+1 (615) 432-7943"],
     },
     {
       icon: Mail,
       title: "Email Us",
-      details: ["info@Brookenmassage.com", "bookings@Brookemassage.com"],
+      details: ["Brookebaby1005@gmail.com"],
     },
     {
       icon: Clock,

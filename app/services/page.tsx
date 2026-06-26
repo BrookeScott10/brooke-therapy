@@ -6,123 +6,137 @@ import { Clock, ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function ServicesPage() {
-  const services = [
-    {
-      category: "Massage Therapy",
-      description: "Release tension and restore balance with our therapeutic massage treatments.",
-      treatments: [
-        {
-          name: "Swedish Massage",
-          description: "A gentle, relaxing massage using long strokes to improve circulation and ease muscle tension.",
-          duration: "60 min",
-          price: "$90",
-          image: "/relaxing-swedish-massage-therapy.jpg",
-        },
-        {
-          name: "Deep Tissue Massage",
-          description: "Targeted pressure to release chronic muscle tension and knots in deeper tissue layers.",
-          duration: "60 min",
-          price: "$110",
-          image: "/deep-tissue-massage-therapy-back.jpg",
-        },
-        {
-          name: "Thai Massage",
-          description: "Ancient healing technique combining stretching, acupressure, and yoga-like movements.",
-          duration: "90 min",
-          price: "$130",
-          image: "/thai-massage-stretching-therapy.jpg",
-        },
-        {
-          name: "Hot Stone Massage",
-          description: "Heated basalt stones combined with massage to melt away tension and stress.",
-          duration: "75 min",
-          price: "$120",
-          image: "/hot-stone-massage-therapy-spa.jpg",
-        },
-      ],
-    },
-    {
-      category: "Facial Treatments",
-      description: "Rejuvenate your skin with our customized facial treatments for a radiant glow.",
-      treatments: [
-        {
-          name: "Classic Facial",
-          description: "Deep cleansing, exfoliation, and hydration for refreshed, glowing skin.",
-          duration: "60 min",
-          price: "$85",
-          image: "/woman-receiving-facial-spa-treatment.jpg",
-        },
-        {
-          name: "Anti-Aging Facial",
-          description: "Advanced treatment targeting fine lines, wrinkles, and loss of elasticity.",
-          duration: "75 min",
-          price: "$130",
-          image: "/anti-aging-facial-treatment-spa.jpg",
-        },
-        {
-          name: "Hydrating Facial",
-          description: "Intensive moisture treatment for dry, dehydrated skin using premium serums.",
-          duration: "60 min",
-          price: "$95",
-          image: "/hydrating-facial-mask-spa-treatment.jpg",
-        },
-      ],
-    },
-    {
-      category: "Body Treatments",
-      description: "Indulge in luxurious body treatments that nourish, detoxify, and rejuvenate.",
-      treatments: [
-        {
-          name: "Body Scrub & Wrap",
-          description: "Exfoliating scrub followed by a nourishing wrap for silky smooth skin.",
-          duration: "90 min",
-          price: "$140",
-          image: "/body-scrub-spa-treatment-exfoliation.jpg",
-        },
-        {
-          name: "Aromatherapy Journey",
-          description: "Full body experience with essential oils tailored to your wellness needs.",
-          duration: "90 min",
-          price: "$150",
-          image: "/aromatherapy-essential-oils-spa-massage.jpg",
-        },
-        {
-          name: "Detox Body Treatment",
-          description: "Cleansing treatment to eliminate toxins and restore natural vitality.",
-          duration: "75 min",
-          price: "$125",
-          image: "/placeholder-chv8f.png",
-        },
-      ],
-    },
-    {
-      category: "Specialty Services",
-      description: "Unique treatments for specific needs and complete wellness experiences.",
-      treatments: [
-        {
-          name: "Prenatal Massage",
-          description: "Gentle, safe massage designed for expectant mothers to relieve pregnancy discomfort.",
-          duration: "60 min",
-          price: "$100",
-          image: "/placeholder.svg?height=300&width=400",
-        },
-        {
-          name: "Sports Recovery",
-          description: "Targeted treatment for athletes to enhance performance and speed recovery.",
-          duration: "60 min",
-          price: "$115",
-          image: "/placeholder.svg?height=300&width=400",
-        },
-        {
-          name: "Couples Retreat",
-          description: "Shared spa experience including massage and relaxation time together.",
-          duration: "120 min",
-          price: "$280",
-          image: "/placeholder.svg?height=300&width=400",
-        },
-      ],
-    },
-  ]
+ const services = [
+  {
+    category: "MASSAGE THERAPY",
+    description:
+      "Release tension and restore balance with our therapeutic massage treatments.",
+    treatments: [
+      {
+        name: "SWEDISH MASSAGE",
+        description:
+          "A gentle, relaxing massage using long, flowing strokes to improve circulation, reduce stress, and ease muscle tension.",
+        duration: "60 min",
+        price: "$90",
+        image: "/relaxing-swedish-massage-therapy.jpg",
+      },
+      {
+        name: "DEEP TISSUE MASSAGE",
+        description:
+          "A therapeutic massage that targets deeper muscle layers to relieve chronic pain, stiffness, and muscle knots.",
+        duration: "60 min",
+        price: "$110",
+        image: "/deep-tissue-massage-therapy-back.jpg",
+      },
+      {
+        name: "SPORTS MASSAGE",
+        description:
+          "Designed for athletes and active individuals to enhance performance, prevent injuries, and speed up muscle recovery.",
+        duration: "90 min",
+        price: "$130",
+        image: "/thai-massage-stretching-therapy.jpg",
+      },
+      {
+        name: "HOT STONE MASSAGE",
+        description:
+          "Heated basalt stones combined with massage techniques to relieve deep muscle tension, improve circulation, and promote relaxation.",
+        duration: "75 min",
+        price: "$120",
+        image: "/hot-stone-massage-therapy-spa.jpg",
+      },
+      {
+        name: "AROMATHERAPY MASSAGE",
+        description:
+          "A soothing massage using carefully selected essential oils to relieve stress, relax the body, and promote emotional well-being.",
+        duration: "75 min",
+        price: "$120",
+        image: "/hot-stone-massage-therapy-spa.jpg",
+      },
+    ],
+  },
+];
+    // {
+    //   category: "Facial Treatments",
+    //   description: "Rejuvenate your skin with our customized facial treatments for a radiant glow.",
+    //   treatments: [
+    //     {
+    //       name: "Classic Facial",
+    //       description: "Deep cleansing, exfoliation, and hydration for refreshed, glowing skin.",
+    //       duration: "60 min",
+    //       price: "$85",
+    //       image: "/woman-receiving-facial-spa-treatment.jpg",
+    //     },
+    //     {
+    //       name: "Anti-Aging Facial",
+    //       description: "Advanced treatment targeting fine lines, wrinkles, and loss of elasticity.",
+    //       duration: "75 min",
+    //       price: "$130",
+    //       image: "/anti-aging-facial-treatment-spa.jpg",
+    //     },
+    //     {
+    //       name: "Hydrating Facial",
+    //       description: "Intensive moisture treatment for dry, dehydrated skin using premium serums.",
+    //       duration: "60 min",
+    //       price: "$95",
+    //       image: "/hydrating-facial-mask-spa-treatment.jpg",
+    //     },
+    //   ],
+    // },
+    // {
+    //   category: "Body Treatments",
+    //   description: "Indulge in luxurious body treatments that nourish, detoxify, and rejuvenate.",
+    //   treatments: [
+    //     {
+    //       name: "Body Scrub & Wrap",
+    //       description: "Exfoliating scrub followed by a nourishing wrap for silky smooth skin.",
+    //       duration: "90 min",
+    //       price: "$140",
+    //       image: "/body-scrub-spa-treatment-exfoliation.jpg",
+    //     },
+    //     {
+    //       name: "Aromatherapy Journey",
+    //       description: "Full body experience with essential oils tailored to your wellness needs.",
+    //       duration: "90 min",
+    //       price: "$150",
+    //       image: "/aromatherapy-essential-oils-spa-massage.jpg",
+    //     },
+    //     {
+    //       name: "Detox Body Treatment",
+    //       description: "Cleansing treatment to eliminate toxins and restore natural vitality.",
+    //       duration: "75 min",
+    //       price: "$125",
+    //       image: "/placeholder-chv8f.png",
+    //     },
+    //   ],
+    // },
+    // {
+    //   category: "Specialty Services",
+    //   description: "Unique treatments for specific needs and complete wellness experiences.",
+    //   treatments: [
+    //     {
+    //       name: "⁠Nuru Massage",
+    //       description: "Gentle, safe massage designed for expectant mothers to relieve pregnancy discomfort.",
+    //       duration: "60 min",
+    //       price: "$100",
+    //       image: "/placeholder.svg?height=300&width=400",
+    //     },
+    //     {
+    //       name: "Sports Recovery",
+    //       description: "Targeted treatment for athletes to enhance performance and speed recovery.",
+    //       duration: "60 min",
+    //       price: "$115",
+    //       image: "/placeholder.svg?height=300&width=400",
+    //     },
+    //     {
+    //       name: "Couples Retreat",
+    //       description: "Shared spa experience including massage and relaxation time together.",
+    //       duration: "120 min",
+    //       price: "$280",
+    //       image: "/placeholder.svg?height=300&width=400",
+    //     },
+    //   ],
+    // },
+  
 
   return (
     <main className="min-h-screen bg-spa-cream">
