@@ -1,9 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import BookingModal from "@/components/booking/booking-modal"
+import { Button } from "../ui/button"
+
 import { useState } from "react"
+import BookingModal from "../booking/booking-modal"
 
 export default function WelcomeSection() {
   const [isBookingOpen, setIsBookingOpen] = useState(false)

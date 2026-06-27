@@ -4,8 +4,9 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, X, Leaf } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import BookingModal from "@/components/booking/booking-modal"
+import { Button } from "../ui/button"
+import BookingModal from "../booking/booking-modal"
+
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)

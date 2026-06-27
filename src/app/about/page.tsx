@@ -54,7 +54,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
                 <Image
-                  src="/professional-female-massage-therapist-portrait-war.jpg"
+                  src="/images/therapy.jpg"
                   alt="Brooke - Massage Therapist"
                   width={480}
                   height={600}
@@ -63,7 +63,7 @@ export default function AboutPage() {
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-48 rounded-2xl overflow-hidden border-4 border-spa-cream shadow-lg hidden md:block">
                 <Image
-                  src="/spa-treatment-room-with-massage-table.jpg"
+                 src="/images/therapy1.jpg"
                   alt="Treatment room"
                   width={200}
                   height={200}

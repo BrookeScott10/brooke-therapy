@@ -1,15 +1,17 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
-import Header from "@/components/layout/header"
-import Footer from "@/components/layout/footer"
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
+import { useContact } from "@/hooks/use-contact"
+import Header from "@/components/layout/header"
 import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
+import Footer from "@/components/layout/footer"
+
+
 
 export default function ContactPage() {
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -21,10 +23,38 @@ export default function ContactPage() {
     message: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitted(true)
-  }
+  const {
+  mutate,
+  isPending,
+} = useContact();
+
+ const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+
+  mutate(
+    {
+      type: "contact",
+      ...formData,
+    },
+    {
+      onSuccess: () => {
+        setIsSubmitted(true);
+
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      },
+
+      onError: (error) => {
+        alert(error.message);
+      },
+    }
+  );
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData((prev) => ({
@@ -203,13 +233,15 @@ export default function ContactPage() {
                       className="rounded-lg border-spa-beige focus:border-spa-orange focus:ring-spa-orange resize-none"
                     />
                   </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3 flex items-center justify-center gap-2"
-                  >
-                    <Send className="w-4 h-4" />
-                    Send Message
-                  </Button>
+                 <Button
+  type="submit"
+  disabled={isPending}
+  className="w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3 flex items-center justify-center gap-2"
+>
+  <Send className="w-4 h-4" />
+
+  {isPending ? "Sending..." : "Send Message"}
+</Button>
                 </form>
               )}
             </div>
