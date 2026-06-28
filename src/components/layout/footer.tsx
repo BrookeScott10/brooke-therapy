@@ -45,7 +45,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Swedish Massage ", "Deep Tissue Massage ", "Hot Stone Massage ", "Sports Massage ", "Aromatherapy Massage", "⁠Nuru Massage"].map((service) => (
                 <li key={service}>
-                  <Link href="/services" className="text-spa-cream/70 hover:text-spa-orange transition-colors text-sm">
+                  <Link href="/" className="text-spa-cream/70 hover:text-spa-orange transition-colors text-sm">
                     {service}
                   </Link>
                 </li>

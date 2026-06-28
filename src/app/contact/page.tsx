@@ -266,7 +266,7 @@ export default function ContactPage() {
             </div>
 
             {/* Map */}
-            <div className="space-y-6">
+            {/* <div className="space-y-6">
               <div className="rounded-2xl overflow-hidden h-[400px] lg:h-full min-h-[400px]">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3305.7152203584424!2d-118.40085068478427!3d34.07362098060215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bbcd8ca8b46f%3A0xb6f3d0c7f67f4e3!2sBeverly%20Hills%2C%20CA%2090210!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
@@ -280,7 +280,7 @@ export default function ContactPage() {
                   className="grayscale hover:grayscale-0 transition-all duration-500"
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
@@ -300,29 +300,28 @@ export default function ContactPage() {
             {[
               {
                 question: "How far in advance should I book my appointment?",
-                answer:
-                  "I recommend booking at least 48-72 hours in advance, especially for weekends and popular treatments. However, I do accommodate same-day appointments when available.",
+                answer: "I recommend booking at least 1hr hour in advance, especially for weekends.",
               },
-              {
-                question: "What is your cancellation policy?",
-                answer:
-                  "I require 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a 50% service charge.",
-              },
-              {
-                question: "Do you offer gift cards?",
-                answer:
-                  "Yes! Gift cards are available in any denomination and can be purchased by contacting me directly. They make perfect gifts for any occasion.",
-              },
-              {
-                question: "What should I wear to my appointment?",
-                answer:
-                  "I provide robes and towels for all treatments. You'll be properly draped during your service for your comfort and privacy.",
-              },
-              {
-                question: "Do you offer packages or memberships?",
-                answer:
-                  "Yes, I offer various massage packages and monthly membership options with exclusive benefits. Contact me to learn more about my wellness programs.",
-              },
+              // {
+              //   question: "What is your cancellation policy?",
+              //   answer:
+              //     "I require 24 hours notice for cancellations or rescheduling. Late cancellations or no-shows may be subject to a 50% service charge.",
+              // },
+              // {
+              //   question: "Do you offer gift cards?",
+              //   answer:
+              //     "Yes! Gift cards are available in any denomination and can be purchased by contacting me directly. They make perfect gifts for any occasion.",
+              // },
+              // {
+              //   question: "What should I wear to my appointment?",
+              //   answer:
+              //     "I provide robes and towels for all treatments. You'll be properly draped during your service for your comfort and privacy.",
+              // },
+              // {
+              //   question: "Do you offer packages or memberships?",
+              //   answer:
+              //     "Yes, I offer various massage packages and monthly membership options with exclusive benefits. Contact me to learn more about my wellness programs.",
+              // },
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-xl p-6">
                 <h3 className="font-serif text-lg text-spa-brown mb-2">

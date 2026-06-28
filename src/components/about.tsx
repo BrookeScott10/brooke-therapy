@@ -104,11 +104,11 @@ No games, please—I’m here for genuine, respectful arrangements only.
 
 
         {/* Gallery Grid */}
-<section className=" mt-32">
+<section className=" mt-10 lg:mt-32">
   <div className="max-w-[1236px] mx-auto px-6">
 
     {/* 4 Image Grid */}
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <div className="aspect-square overflow-hidden rounded-2xl">
         <Image
           src="/images/brok.jpg"

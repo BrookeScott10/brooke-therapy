@@ -11,7 +11,7 @@ type Review = {
   name: string;
   initials: string;
   date: string; // YYYY-MM-DD
-  therapist: string;
+//   therapist: string;
   review: string;
   rating: number;
   verified: boolean;
@@ -23,7 +23,7 @@ const reviews: Review[] = [
     name: "Teresa P",
     initials: "T",
     date: "2025-11-16",
-    therapist: "Alexandria Brush",
+    // therapist: "Alexandria Brush",
     review: "Great therapist!",
     rating: 5,
     verified: true,
@@ -33,7 +33,7 @@ const reviews: Review[] = [
     name: "Coni D",
     initials: "CD",
     date: "2025-1-20",
-    therapist: "Brooke Lerna",
+    // therapist: "Brooke Lerna",
     review: "Two thumbs up! Wonderful! Renews my health! Thanks again Brooke.",
     rating: 5,
     verified: true,
@@ -43,7 +43,7 @@ const reviews: Review[] = [
     name: "Teresa P",
     initials: "T",
     date: "2026-05-12",
-    therapist: "Alexandria Brush",
+    // therapist: "Alexandria Brush",
     review: "Excellent service.",
     rating: 5,
     verified: true,
@@ -53,7 +53,7 @@ const reviews: Review[] = [
     name: "Bryan S",
     initials: "B",
     date: "2026-05-29",
-    therapist: "Alexandria Brush",
+    // therapist: "Alexandria Brush",
     review: "Professional, caring and highly recommended.",
     rating: 4,
     verified: true,
@@ -63,7 +63,7 @@ const reviews: Review[] = [
     name: "Melissa R",
     initials: "M",
     date: "2026-06-10",
-    therapist: "Brooke Lerna",
+    // therapist: "Brooke Lerna",
     review:
       "Amazing experience from start to finish. I left feeling refreshed.",
     rating: 5,
@@ -74,8 +74,8 @@ const reviews: Review[] = [
     name: "David K",
     initials: "D",
     date: "2026-06-18",
-    therapist: "Alexandria Brush",
-    review: "Friendly staff and outstanding service. Will definitely return.",
+    // therapist: "Alexandria Brush",
+    review: "Friendly and outstanding service. Will definitely return.",
     rating: 4,
     verified: true,
   },
@@ -104,15 +104,17 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
         data = data.filter((r) => r.rating === 4);
         break;
 
-      case "alexandria":
-        data = data.filter((r) =>
-          r.therapist.toLowerCase().includes("alexandria"),
-        );
-        break;
+     case "alexandria":
+  // data = data.filter((r) =>
+  //   r.therapist?.toLowerCase().includes("alexandria")
+  // );
+  break;
 
-      case "brooke":
-        data = data.filter((r) => r.therapist.toLowerCase().includes("brooke"));
-        break;
+case "brooke":
+  // data = data.filter((r) =>
+  //   r.therapist?.toLowerCase().includes("brooke")
+  // );
+  break;
 
       default:
         break;
@@ -251,7 +253,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
             {/* Therapist */}
 
             <h4 className="mt-5 text-xl font-medium text-gray-900">
-              {review.therapist}
+              {/* {review.therapist} */}
             </h4>
 
             {/* Review */}

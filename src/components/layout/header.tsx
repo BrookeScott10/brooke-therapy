@@ -105,7 +105,7 @@ export default function Header() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <nav className="md:hidden mt-4 pb-4 border-t border-spa-orange/20 pt-4 space-y-2">
+            <nav className="md:hidden mt-4 pb-4 border-t border-spa-orange/20 pt-4 space-y-2 uppercase">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
