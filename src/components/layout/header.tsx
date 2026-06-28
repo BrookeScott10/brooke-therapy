@@ -63,7 +63,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation (tablet + desktop) */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+            <nav className="hidden md:flex items-center gap-6 lg:gap-8 uppercase">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
