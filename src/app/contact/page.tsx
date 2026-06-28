@@ -1,67 +1,64 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState } from "react"
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react"
-import { useContact } from "@/hooks/use-contact"
-import Header from "@/components/layout/header"
-import { Button } from "@/components/ui/button"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import Footer from "@/components/layout/footer"
-
-
+import type React from "react";
+import { useState } from "react";
+import { MapPin, Phone, Mail, Clock, Send, CheckCircle } from "lucide-react";
+import { useContact } from "@/hooks/use-contact";
+import Header from "@/components/layout/header";
+import { Button } from "@/components/ui/button";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import Footer from "@/components/layout/footer";
 
 export default function ContactPage() {
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     subject: "",
     message: "",
-  })
+  });
 
-  const {
-  mutate,
-  isPending,
-} = useContact();
+  const { mutate, isPending } = useContact();
 
- const handleSubmit = (e: React.FormEvent) => {
-  e.preventDefault();
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
 
-  mutate(
-    {
-      type: "contact",
-      ...formData,
-    },
-    {
-      onSuccess: () => {
-        setIsSubmitted(true);
-
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          subject: "",
-          message: "",
-        });
+    mutate(
+      {
+        type: "contact",
+        ...formData,
       },
+      {
+        onSuccess: () => {
+          setIsSubmitted(true);
 
-      onError: (error) => {
-        alert(error.message);
+          setFormData({
+            name: "",
+            email: "",
+            phone: "",
+            subject: "",
+            message: "",
+          });
+        },
+
+        onError: (error) => {
+          alert(error.message);
+        },
       },
-    }
-  );
-};
+    );
+  };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
-    }))
-  }
+    }));
+  };
 
   const contactInfo = [
     {
@@ -82,9 +79,12 @@ export default function ContactPage() {
     {
       icon: Clock,
       title: "Opening Hours",
-      details: ["Mon - Fri: 9:00 AM - 9:00 PM", "Sat - Sun: 10:00 AM - 7:00 PM"],
+      details: [
+        "Mon - Fri: 9:00 AM - 9:00 PM",
+        "Sat - Sun: 10:00 AM - 7:00 PM",
+      ],
     },
-  ]
+  ];
 
   return (
     <main className="min-h-screen bg-spa-cream">
@@ -94,9 +94,12 @@ export default function ContactPage() {
       <section className="relative pt-32 pb-20 bg-spa-brown overflow-hidden">
         <div className="max-w-[1236px] mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="font-serif text-4xl md:text-6xl text-spa-cream mb-6 text-balance">Contact Us</h1>
+            <h1 className="font-serif text-4xl md:text-6xl text-spa-cream mb-6 text-balance">
+              Contact Us
+            </h1>
             <p className="text-spa-cream/90 text-lg leading-relaxed">
-              Have questions or ready to book your wellness journey? I am here to help you every step of the way.
+              Have questions or ready to book your wellness journey? I am here
+              to help you every step of the way.
             </p>
           </div>
         </div>
@@ -108,11 +111,16 @@ export default function ContactPage() {
         <div className="max-w-[1236px] mx-auto px-6">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
-              <div key={index} className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-shadow">
+              <div
+                key={index}
+                className="bg-white rounded-2xl p-6 text-center hover:shadow-lg transition-shadow"
+              >
                 <div className="w-14 h-14 rounded-full bg-spa-orange/10 flex items-center justify-center mx-auto mb-4">
                   <info.icon className="w-6 h-6 text-spa-orange" />
                 </div>
-                <h3 className="font-serif text-lg text-spa-brown mb-3">{info.title}</h3>
+                <h3 className="font-serif text-lg text-spa-brown mb-3">
+                  {info.title}
+                </h3>
                 {info.details.map((detail, i) => (
                   <p key={i} className="text-spa-brown/70 text-sm">
                     {detail}
@@ -130,9 +138,12 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div className="bg-white rounded-2xl p-8 md:p-10 shadow-sm">
-              <h2 className="font-serif text-2xl md:text-3xl text-spa-brown mb-2">Send Us a Message</h2>
+              <h2 className="font-serif text-2xl md:text-3xl text-spa-brown mb-2">
+                Send Us a Message
+              </h2>
               <p className="text-spa-brown/70 mb-8">
-                Fill out the form below and I will get back to you within 24 hours.
+                Fill out the form below and I will get back to you within 24
+                hours.
               </p>
 
               {isSubmitted ? (
@@ -140,14 +151,23 @@ export default function ContactPage() {
                   <div className="w-20 h-20 rounded-full bg-spa-sage/20 flex items-center justify-center mx-auto mb-6">
                     <CheckCircle className="w-10 h-10 text-spa-sage-dark" />
                   </div>
-                  <h3 className="font-serif text-2xl text-spa-brown mb-3">Message Sent!</h3>
+                  <h3 className="font-serif text-2xl text-spa-brown mb-3">
+                    Message Sent!
+                  </h3>
                   <p className="text-spa-brown/70 mb-6">
-                    Thank you for reaching out. I will respond to your inquiry shortly.
+                    Thank you for reaching out. I will respond to your inquiry
+                    shortly.
                   </p>
                   <Button
                     onClick={() => {
-                      setIsSubmitted(false)
-                      setFormData({ name: "", email: "", phone: "", subject: "", message: "" })
+                      setIsSubmitted(false);
+                      setFormData({
+                        name: "",
+                        email: "",
+                        phone: "",
+                        subject: "",
+                        message: "",
+                      });
                     }}
                     variant="outline"
                     className="border-spa-orange text-spa-orange hover:bg-spa-orange/10 rounded-full"
@@ -233,15 +253,15 @@ export default function ContactPage() {
                       className="rounded-lg border-spa-beige focus:border-spa-orange focus:ring-spa-orange resize-none"
                     />
                   </div>
-                 <Button
-  type="submit"
-  disabled={isPending}
-  className="w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3 flex items-center justify-center gap-2"
->
-  <Send className="w-4 h-4" />
+                  <Button
+                    type="submit"
+                    disabled={isPending}
+                    className="w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3 flex items-center justify-center gap-2"
+                  >
+                    <Send className="w-4 h-4" />
 
-  {isPending ? "Sending..." : "Send Message"}
-</Button>
+                    {isPending ? "Sending..." : "Send Message"}
+                  </Button>
                 </form>
               )}
             </div>
@@ -270,7 +290,9 @@ export default function ContactPage() {
       <section className="py-16 bg-spa-beige/30">
         <div className="max-w-[1236px] mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-spa-orange font-medium text-sm uppercase tracking-wider">FAQ</span>
+            <span className="text-spa-orange font-medium text-sm uppercase tracking-wider">
+              FAQ
+            </span>
             <h2 className="font-serif text-3xl md:text-4xl text-spa-brown mt-2 text-balance">
               Frequently Asked Questions
             </h2>
@@ -304,8 +326,12 @@ export default function ContactPage() {
               },
             ].map((faq, index) => (
               <div key={index} className="bg-white rounded-xl p-6">
-                <h3 className="font-serif text-lg text-spa-brown mb-2">{faq.question}</h3>
-                <p className="text-spa-brown/70 text-sm leading-relaxed">{faq.answer}</p>
+                <h3 className="font-serif text-lg text-spa-brown mb-2">
+                  {faq.question}
+                </h3>
+                <p className="text-spa-brown/70 text-sm leading-relaxed">
+                  {faq.answer}
+                </p>
               </div>
             ))}
           </div>
@@ -314,5 +340,5 @@ export default function ContactPage() {
 
       <Footer />
     </main>
-  )
+  );
 }

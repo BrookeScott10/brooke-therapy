@@ -1,3 +1,4 @@
+import ReviewsSection from "@/components/review/ReviewsSection";
 import ContactCTA from "../components/cta/contact-cta";
 import PamperingExperiences from "../components/experiences/pampering-experiences";
 import SpaGallery from "../components/gallery/spa-gallery";
@@ -12,24 +13,30 @@ import Testimonials from "../components/testimonials/Testimonials";
 import WelcomeSection from "../components/welcome/welcome-section";
 import WellnessJourney from "../components/wellness/wellness-journey";
 import WellnessNatural from "../components/wellness/wellness-natural";
+import RateCardSection from "@/components/review/RateCardSection";
+import AboutPage from "@/components/about";
+
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-spa-cream">
       <Header />
       <HeroSection />
-      <FeaturedServices />
+      {/* <FeaturedServices /> */}
+      <AboutPage/>
       <MassageTypes />
-      <WellnessJourney />
+      {/* <WellnessJourney />
       <SpaExperience />
-      {/* <FacialBenefits /> */}
-      <StoreProducts />
+      <FacialBenefits /> */}
+      {/* <StoreProducts />
       <SpaGallery />
       <WellnessNatural />
       <PamperingExperiences />
-      <ContactCTA/>
+      <ContactCTA/> */}
+      <RateCardSection/>
+      <ReviewsSection/>
       <WelcomeSection />
-      <Testimonials/>
+      {/* <Testimonials/> */}
       <Footer />
     </main>
   )

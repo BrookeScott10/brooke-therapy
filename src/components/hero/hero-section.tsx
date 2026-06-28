@@ -20,7 +20,7 @@ export default function HeroSection() {
             BROOKE&apos;S STUDIO
           </h1>
         <div className="max-w-2xl">
-          <p className="text-spa-cream/90 text-sm md:text-xl mb-4 leading-[35px]">
+          <p className="text-spa-cream/90 text-sm md:text-xl mb-4 leading-[40px]">
             The pure sensation. Your expert therapeutic massage therapist uniquely skilled to help bring the entire
             mind, body and wellness awareness to life. Treating you with each session
           </p>
