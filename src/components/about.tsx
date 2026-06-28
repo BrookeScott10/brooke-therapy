@@ -124,7 +124,7 @@ No games, please—I’m here for genuine, respectful arrangements only.
         </div>
       </section>
 
-      <section className="py-16 bg-spa-orange">
+      {/* <section className="py-16 bg-spa-orange">
         <div className="max-w-[1236px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {[
@@ -140,7 +140,7 @@ No games, please—I’m here for genuine, respectful arrangements only.
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </main>
   )
 }

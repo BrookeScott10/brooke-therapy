@@ -64,7 +64,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["123 Wellness Boulevard", "Beverly Hills, CA 90210"],
+      details: ["In-Call & Out-Call"],
     },
     {
       icon: Phone,
@@ -80,8 +80,7 @@ export default function ContactPage() {
       icon: Clock,
       title: "Opening Hours",
       details: [
-        "Mon - Fri: 9:00 AM - 9:00 PM",
-        "Sat - Sun: 10:00 AM - 7:00 PM",
+       "Flexible Hours – Contact Anytime"
       ],
     },
   ];
