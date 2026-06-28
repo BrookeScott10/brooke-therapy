@@ -104,17 +104,17 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
         data = data.filter((r) => r.rating === 4);
         break;
 
-     case "alexandria":
-  // data = data.filter((r) =>
-  //   r.therapist?.toLowerCase().includes("alexandria")
-  // );
-  break;
+//      case "alexandria":
+//   // data = data.filter((r) =>
+//   //   r.therapist?.toLowerCase().includes("alexandria")
+//   // );
+//   break;
 
-case "brooke":
-  // data = data.filter((r) =>
-  //   r.therapist?.toLowerCase().includes("brooke")
-  // );
-  break;
+// case "brooke":
+//   // data = data.filter((r) =>
+//   //   r.therapist?.toLowerCase().includes("brooke")
+//   // );
+//   break;
 
       default:
         break;
@@ -174,11 +174,11 @@ case "brooke":
             className="h-12 w-full appearance-none rounded-md border border-gray-300 bg-white pl-11 pr-4 text-gray-700 outline-none focus:border-red-400"
           >
             <option value="all">All Reviews</option>
-            <option value="verified">Verified Reviews</option>
+            {/* <option value="verified">Verified Reviews</option> */}
             <option value="5star">5 Stars</option>
             <option value="4star">4 Stars</option>
-            <option value="alexandria">Alexandria Brush</option>
-            <option value="brooke">Brooke Lerna</option>
+            {/* <option value="alexandria">Alexandria Brush</option>
+            <option value="brooke">Brooke Lerna</option> */}
           </select>
         </div>
 
