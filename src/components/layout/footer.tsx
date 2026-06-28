@@ -26,8 +26,8 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { name: "Home", href: "/" },
-                { name: "About Us", href: "/about" },
-                { name: "Our Services", href: "/services" },
+                // { name: "About Us", href: "/about" },
+                // { name: "Our Services", href: "/services" },
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
@@ -43,7 +43,7 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-lg mb-4">Services</h4>
             <ul className="space-y-2">
-              {["Massage Therapy", "Facial Treatments", "Body Treatments", "Specialty Services"].map((service) => (
+              {["Swedish Massage ", "Deep Tissue Massage ", "Hot Stone Massage ", "Sports Massage ", "Aromatherapy Massage", "⁠Nuru Massage"].map((service) => (
                 <li key={service}>
                   <Link href="/services" className="text-spa-cream/70 hover:text-spa-orange transition-colors text-sm">
                     {service}
@@ -52,22 +52,21 @@ export default function Footer() {
               ))}
             </ul>
           </div>
-
           {/* Contact */}
           <div>
             <h4 className="font-serif text-lg mb-4">Contact Us</h4>
             <ul className="space-y-2 text-spa-cream/70 text-sm">
-              <li>123 Wellness Boulevard</li>
-              <li>Beverly Hills, CA 90210</li>
-              <li>+1 (555) 123-4567</li>
-              <li>info@relaxstudio.com</li>
+              <li>Available for both Incall & Outcall</li>
+              <li>+1 (615) 432-7943</li>
+              <li>Brookebaby1005@gmail.com</li>
+
             </ul>
           </div>
         </div>
 
         <div className="border-t border-spa-cream/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          {/* <div className="flex items-center gap-4">
             <Link href="#" className="hover:text-spa-orange transition-colors" aria-label="Facebook">
               <Facebook className="w-5 h-5" />
             </Link>
@@ -80,7 +79,7 @@ export default function Footer() {
             <Link href="#" className="hover:text-spa-orange transition-colors" aria-label="Youtube">
               <Youtube className="w-5 h-5" />
             </Link>
-          </div>
+          </div> */}
 
           {/* Copyright */}
           <p className="text-sm opacity-80">

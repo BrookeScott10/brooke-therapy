@@ -64,7 +64,7 @@ export default function ContactPage() {
     {
       icon: MapPin,
       title: "Visit Us",
-      details: ["In-Call & Out-Call"],
+      details: ["Available for both Incall & Outcall"],
     },
     {
       icon: Phone,
