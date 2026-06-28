@@ -8,7 +8,7 @@ export default function HeroSection() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/woman-relaxing-spa-facial-treatment-warm-lighting-.jpg')",
+          backgroundImage: "url('/images/broke.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/70 to-spa-brown/50" />
