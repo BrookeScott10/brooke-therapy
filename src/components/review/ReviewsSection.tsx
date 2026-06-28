@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Star, CheckCircle, Filter, ArrowDownUp, X } from "lucide-react";
 import ReviewForm from "./reviewForm";
 import BookingModal from "../booking/booking-modal";
@@ -23,7 +23,6 @@ const reviews: Review[] = [
     name: "Teresa P",
     initials: "T",
     date: "2025-11-16",
-    // therapist: "Alexandria Brush",
     review: "Great therapist!",
     rating: 5,
     verified: true,
@@ -32,8 +31,7 @@ const reviews: Review[] = [
     id: 2,
     name: "Coni D",
     initials: "CD",
-    date: "2025-1-20",
-    // therapist: "Brooke Lerna",
+    date: "2025-01-20",
     review: "Two thumbs up! Wonderful! Renews my health! Thanks again Brooke.",
     rating: 5,
     verified: true,
@@ -43,7 +41,6 @@ const reviews: Review[] = [
     name: "Teresa P",
     initials: "T",
     date: "2026-05-12",
-    // therapist: "Alexandria Brush",
     review: "Excellent service.",
     rating: 5,
     verified: true,
@@ -53,7 +50,6 @@ const reviews: Review[] = [
     name: "Bryan S",
     initials: "B",
     date: "2026-05-29",
-    // therapist: "Alexandria Brush",
     review: "Professional, caring and highly recommended.",
     rating: 4,
     verified: true,
@@ -63,9 +59,7 @@ const reviews: Review[] = [
     name: "Melissa R",
     initials: "M",
     date: "2026-06-10",
-    // therapist: "Brooke Lerna",
-    review:
-      "Amazing experience from start to finish. I left feeling refreshed.",
+    review: "Amazing experience from start to finish. I left feeling refreshed.",
     rating: 5,
     verified: true,
   },
@@ -74,12 +68,124 @@ const reviews: Review[] = [
     name: "David K",
     initials: "D",
     date: "2026-06-18",
-    // therapist: "Alexandria Brush",
     review: "Friendly and outstanding service. Will definitely return.",
     rating: 4,
     verified: true,
   },
+
+  // NEW REVIEWS
+  {
+    id: 7,
+    name: "Emily H",
+    initials: "EH",
+    date: "2025-04-10",
+    review:
+      "A very calming experience from beginning to end. Brooke listened to the areas where I had tension and adjusted the session perfectly. I felt so much better afterward and will definitely return.",
+    rating: 4,
+    verified: false,
+  },
+  {
+    id: 8,
+    name: "David K",
+    initials: "DK",
+    date: "2026-04-22",
+    review:
+      "Good session overall. Brooke was polite and professional. Scheduling took a little longer than expected, but the massage itself was enjoyable.",
+    rating: 3,
+    verified: true,
+  },
+  {
+    id: 9,
+    name: "Jessica M",
+    initials: "JM",
+    date: "2026-06-18",
+    review:
+      "The massage was good overall and Brooke was friendly and welcoming. The pressure was a bit lighter than I usually prefer, but it was still relaxing and helped relieve my neck and shoulder tension.",
+    rating: 3,
+    verified: false,
+  },
+  {
+    id: 10,
+    name: "Chris M",
+    initials: "CM",
+    date: "2026-06-03",
+    review:
+      "Very pleasant experience. Brooke has a calming personality and great technique. Left feeling refreshed and much less stressed.",
+    rating: 4,
+    verified: true,
+  },
+  {
+    id: 11,
+    name: "Sarah L",
+    initials: "SL",
+    date: "2026-01-31",
+    review:
+      "I was looking for a relaxing massage after a stressful week, and Brooke exceeded my expectations. She was kind, professional, and made me feel completely comfortable. I left feeling refreshed and renewed.",
+    rating: 5,
+    verified: false,
+  },
+  {
+    id: 12,
+    name: "Anthony W",
+    initials: "AW",
+    date: "2025-05-16",
+    review:
+      "One of the best massages I’ve had in years. Clean, relaxing atmosphere and excellent attention to detail. Highly recommended!",
+    rating: 5,
+    verified: false,
+  },
+  {
+    id: 13,
+    name: "Michael R",
+    initials: "MR",
+    date: "2026-03-08",
+    review: "Very good at what she does, but not always available.",
+    rating: 4,
+    verified: true,
+  },
+  {
+    id: 14,
+    name: "James B",
+    initials: "JB",
+    date: "2025-02-14",
+    review:
+      "Amazing experience from start to finish. Professional, friendly, and made me feel completely relaxed. I’ll definitely be booking another session soon.",
+    rating: 5,
+    verified: false,
+  },
+  {
+    id: 15,
+    name: "Daniel & Rachel P",
+    initials: "DR",
+    date: "2025-02-27",
+    review:
+      "My wife and I booked a couples massage for our anniversary, and it was absolutely worth it. Brooke created such a relaxing atmosphere, and we both left feeling refreshed.",
+    rating: 5,
+    verified: false,
+  },
+  {
+    id: 16,
+    name: "Mark & Jennifer S",
+    initials: "MJ",
+    date: "2026-05-09",
+    review:
+      "We had a wonderful couples massage experience. Brooke was warm, professional, and made us both feel comfortable from the moment we arrived.",
+    rating: 4,
+    verified: true,
+  },
+  {
+    id: 17,
+    name: "Kevin & Amanda T",
+    initials: "KA",
+    date: "2026-06-01",
+    review:
+      "Our first couples massage together, and Brooke made it a fantastic experience. The environment was peaceful, and we both walked out feeling completely relaxed.",
+    rating: 5,
+    verified: false,
+  },
 ];
+
+
 
 export default function ReviewsSection() {
   const [filter, setFilter] = useState("all");
@@ -87,6 +193,12 @@ export default function ReviewsSection() {
   const [showReviewModal, setShowReviewModal] = useState(false);
 const [isBookingOpen, setIsBookingOpen] = useState(false);
 const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+const [visibleCount, setVisibleCount] = useState(3);
+
+
+useEffect(() => {
+  setVisibleCount(3);
+}, [filter, sort]);
 
   const filteredReviews = useMemo(() => {
     let data = [...reviews];
@@ -204,7 +316,7 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
       {/* Reviews */}
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {filteredReviews.map((review) => (
+        {filteredReviews.slice(0, visibleCount).map((review) => (
           <div
             key={review.id}
             className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
@@ -262,6 +374,18 @@ const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
           </div>
         ))}
       </div>
+
+
+      {visibleCount < filteredReviews.length && (
+  <div className="mt-8 flex justify-center">
+    <button
+      onClick={() => setVisibleCount((prev) => prev + 6)}
+      className="rounded-md border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
+    >
+      Load more reviews
+    </button>
+  </div>
+)}
 
       {/* Book Now Button */}
 
