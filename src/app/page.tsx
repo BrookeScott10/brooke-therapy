@@ -35,7 +35,7 @@ export default function Home() {
       <ContactCTA/> */}
       <RateCardSection/>
       <ReviewsSection/>
-      <WelcomeSection />
+      {/* <WelcomeSection /> */}
       {/* <Testimonials/> */}
       <Footer />
     </main>

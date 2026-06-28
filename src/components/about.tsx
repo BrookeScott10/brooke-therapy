@@ -52,7 +52,7 @@ export default function AboutPage() {
             <div className="relative">
               <div className="aspect-[4/5] rounded-2xl overflow-hidden">
                 <Image
-                  src="/images/therapy.jpg"
+                  src="/images/Brooke.jpg"
                   alt="Brooke - Massage Therapist"
                   width={480}
                   height={600}
@@ -101,10 +101,60 @@ No games, please—I’m here for genuine, respectful arrangements only.
             </div>
           </div>
         </div>
+
+
+        {/* Gallery Grid */}
+<section className=" mt-32">
+  <div className="max-w-[1236px] mx-auto px-6">
+
+    {/* 4 Image Grid */}
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="aspect-square overflow-hidden rounded-2xl">
+        <Image
+          src="/images/brok.jpg"
+          alt="Massage room"
+          width={500}
+          height={500}
+          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      <div className="aspect-square overflow-hidden rounded-2xl">
+        <Image
+         src="/images/brok1.jpg"
+          alt="Spa setup"
+          width={500}
+          height={500}
+          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      <div className="aspect-square overflow-hidden rounded-2xl">
+        <Image
+          src="/images/brok2.jpg"
+          alt="Relaxing atmosphere"
+          width={500}
+          height={500}
+          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+
+      <div className="aspect-square overflow-hidden rounded-2xl">
+        <Image
+          src="/images/brok3.jpg"
+          alt="Massage experience"
+          width={500}
+          height={500}
+          className="h-full w-full object-cover hover:scale-105 transition-transform duration-300"
+        />
+      </div>
+    </div>
+  </div>
+</section>
       </section>
 
       {/* Our Values */}
-      <section className="py-20 bg-spa-beige/50">
+      {/* <section className="py-20 bg-spa-beige/50">
         <div className="max-w-[1236px] mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-spa-orange font-medium text-sm uppercase tracking-wider">My Values</span>
@@ -122,7 +172,7 @@ No games, please—I’m here for genuine, respectful arrangements only.
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* <section className="py-16 bg-spa-orange">
         <div className="max-w-[1236px] mx-auto px-6">
