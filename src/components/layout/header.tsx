@@ -1,42 +1,42 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X, Leaf } from "lucide-react"
-import { Button } from "../ui/button"
-import BookingModal from "../booking/booking-modal"
-
+import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { Menu, X, Leaf } from "lucide-react";
+import { Button } from "../ui/button";
+import BookingModal from "../booking/booking-modal";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isBookingOpen, setIsBookingOpen] = useState(false)
-  const pathname = usePathname()
-  const isHomePage = pathname === "/"
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // lock body scroll when menu is open (important for mobile UX)
   useEffect(() => {
-    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto"
-  }, [isMobileMenuOpen])
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: "Home", href: "/" },
     // { name: "About", href: "/about" },
     // { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
-  ]
+    { name: "Check Gift Card Balance", href: "/gift-card-balance" },
+  ];
 
   const getTextColor = () => {
-    if (isScrolled) return "text-spa-brown"
-    return "text-spa-cream"
-  }
+    if (isScrolled) return "text-spa-brown";
+    return "text-spa-cream";
+  };
 
   return (
     <>
@@ -49,7 +49,6 @@ export default function Header() {
       >
         <div className="max-w-[1236px] mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
           <div className="flex items-center justify-between">
-
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2 min-w-0">
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-spa-orange flex items-center justify-center flex-shrink-0">
@@ -63,24 +62,30 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation (tablet + desktop) */}
-            <nav className="hidden md:flex items-center gap-6 lg:gap-8 uppercase">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-sm font-medium transition-colors hover:text-spa-orange ${
-                    pathname === link.href
-                      ? "text-spa-orange"
-                      : getTextColor()
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+            <nav className="hidden lg:flex items-center gap-6 lg:gap-8 uppercase">
+              {navLinks.map((link) => {
+                const isCTA = link.name === "Check Gift Card Balance";
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`
+        text-sm font-medium transition-colors hover:text-spa-orange
+
+        ${pathname === link.href ? "text-spa-orange" : getTextColor()}
+
+        ${isCTA ? "ml-2 rounded-full border border-spa-orange px-4 py-1.5 hover:bg-spa-orange hover:text-white" : ""}
+      `}
+                  >
+                    {link.name}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop Button */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <Button
                 onClick={() => setIsBookingOpen(true)}
                 className="bg-spa-orange hover:bg-spa-orange-light text-spa-cream px-4 lg:px-6 py-2 rounded-full text-sm font-medium"
@@ -91,7 +96,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className="md:hidden p-2"
+              className="lg:hidden p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -105,7 +110,7 @@ export default function Header() {
 
           {/* Mobile Menu */}
           {isMobileMenuOpen && (
-            <nav className="md:hidden mt-4 pb-4 border-t border-spa-orange/20 pt-4 space-y-2 uppercase">
+            <nav className="lg:hidden mt-4 pb-4 border-t border-spa-orange/20 pt-4 space-y-2 uppercase">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -113,8 +118,8 @@ export default function Header() {
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={`block py-3 px-2 rounded-md text-base transition-colors ${
                     pathname === link.href
-                      ? "text-spa-orange"
-                      : "text-spa-brown hover:text-spa-orange"
+                      ? "text-white"
+                      : "text-white hover:text-spa-orange"
                   }`}
                 >
                   {link.name}
@@ -123,8 +128,8 @@ export default function Header() {
 
               <Button
                 onClick={() => {
-                  setIsMobileMenuOpen(false)
-                  setIsBookingOpen(true)
+                  setIsMobileMenuOpen(false);
+                  setIsBookingOpen(true);
                 }}
                 className="mt-4 w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3"
               >
@@ -135,7 +140,10 @@ export default function Header() {
         </div>
       </header>
 
-      <BookingModal isOpen={isBookingOpen} onClose={() => setIsBookingOpen(false)} />
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+      />
     </>
-  )
+  );
 }

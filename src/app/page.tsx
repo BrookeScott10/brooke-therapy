@@ -15,6 +15,8 @@ import WellnessJourney from "../components/wellness/wellness-journey";
 import WellnessNatural from "../components/wellness/wellness-natural";
 import RateCardSection from "@/components/review/RateCardSection";
 import AboutPage from "@/components/about";
+import GiftCardBalanceForm from "@/components/giftCard/GiftCardBalanceForm";
+
 
 
 export default function Home() {
@@ -25,6 +27,7 @@ export default function Home() {
       {/* <FeaturedServices /> */}
       <AboutPage/>
       <MassageTypes />
+      {/* <GiftCardBalanceForm/> */}
       {/* <WellnessJourney />
       <SpaExperience />
       <FacialBenefits /> */}
@@ -37,7 +40,6 @@ export default function Home() {
       <ReviewsSection/>
       {/* <WelcomeSection /> */}
       {/* <Testimonials/> */}
-      <Footer />
     </main>
   )
 }

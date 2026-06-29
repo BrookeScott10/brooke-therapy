@@ -4,6 +4,9 @@ import { Playfair_Display, Lato } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import QueryProvider from "../providers/query-provider"
+import { Toaster } from "sonner"
+import Header from "@/components/layout/header"
+import Footer from "@/components/layout/footer"
 
 const _playfair = Playfair_Display({
   subsets: ["latin"],
@@ -16,12 +19,13 @@ const _lato = Lato({
 })
 
 export const metadata: Metadata = {
-  title: "Brooke&apos; Relax Studio | Luxury Spa & Massage",
+  title: "Brooke Relax Studio | Luxury Spa & Massage",
   description:
-    "Enter a world of wellness, peace and harmony. Experience premium massage and spa treatments at Relax Studio.",
-  keywords: ["spa", "massage", "wellness", "relaxation", "facial", "thai massage", "body treatment"],
+    "Enter a world of wellness, peace and harmony. Experience premium massage and spa treatments at Brooke Studio.",
+  keywords: ["Swedish Massage ", "Deep Tissue Massage ", "Hot Stone Massage ", "Sports Massage ", "Aromatherapy Massage ", "⁠Nuru Massage", ],
     generator: 'v0.app'
 }
+
 
 export default function RootLayout({
   children,
@@ -31,7 +35,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
-        <QueryProvider>{children}</QueryProvider>
+        <QueryProvider>
+          <Header/>
+          {children}
+<Toaster richColors position="top-right" />
+  <Footer/>
+        </QueryProvider>
         <Analytics />
       </body>
     </html>
