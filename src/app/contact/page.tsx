@@ -74,7 +74,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email Us",
-      details: ["Brookebaby1005@gmail.com"],
+      details: ["sdbrooke1005@gmail.com"],
     },
     {
       icon: Clock,

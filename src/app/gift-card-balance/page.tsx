@@ -12,8 +12,8 @@ export default function GiftCardBalancePage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-24 px-4">
-      <div className="mx-auto max-w-4xl">
+    <div className="min-h-screen bg-gray-100 py-24">
+      <div className="mx-auto w-full">
         <GiftCardBalanceForm
           onSubmit={handleSubmit}
           onCancel={() => (window.location.href = "/")}

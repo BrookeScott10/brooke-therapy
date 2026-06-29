@@ -27,7 +27,7 @@ export default function Home() {
       {/* <FeaturedServices /> */}
       <AboutPage/>
       <MassageTypes />
-      {/* <GiftCardBalanceForm/> */}
+      <GiftCardBalanceForm/>
       {/* <WellnessJourney />
       <SpaExperience />
       <FacialBenefits /> */}

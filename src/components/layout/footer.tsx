@@ -86,7 +86,7 @@ export default function Footer() {
             <ul className="space-y-2 text-spa-cream/70 text-sm">
               <li>Available for both Incall & Outcall</li>
               <li>+1 (615) 432-7943</li>
-              <li>Brookebaby1005@gmail.com</li>
+              <li>sdbrooke1005@gmail.com</li>
             </ul>
           </div>
         </div>

@@ -1,143 +1,50 @@
 "use client";
 
-import { useState } from "react";
-import GiftCardBalanceForm from "./GiftCardBalanceForm";
-import { GiftCard } from "./types";
+import { Loader2 } from "lucide-react";
 
 interface Props {
   open: boolean;
+  amount: number | null;
+  loading?: boolean;
   onClose: () => void;
+  onConfirm: () => void;
 }
 
-interface Result {
-  cardNumber: string;
-  balance?: number;
-  error?: string;
-}
-
-export default function GiftCardBalanceModal({
+export default function BalanceConfirmModal({
   open,
+  amount,
+  loading = false,
   onClose,
+  onConfirm,
 }: Props) {
-  const [results, setResults] = useState<Result[] | null>(null);
-  const [loading, setLoading] = useState(false);
-
   if (!open) return null;
 
-  const handleSubmit = async (data: {
-    cards: GiftCard[];
-    denomination: number | null;
-  }) => {
-    setLoading(true);
-
-    try {
-      // 🔌 replace with real API later
-      await new Promise((r) => setTimeout(r, 1200));
-
-      const mocked: Result[] = data.cards.map((c) => ({
-        cardNumber: c.cardNumber,
-        balance:
-          c.cardNumber.length < 8
-            ? undefined
-            : Math.floor(Math.random() * 500) + 10,
-        error:
-          c.cardNumber.length < 8 ? "Invalid card number" : undefined,
-      }));
-
-      setResults(mocked);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const reset = () => {
-    setResults(null);
-  };
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      
-      {/* Overlay */}
-      <div
-        className="absolute inset-0 bg-black/60"
-        onClick={onClose}
-      />
+    <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
+      <div className="bg-white rounded-2xl p-6 w-[420px]">
+        <h2 className="text-xl font-semibold mb-4">Confirm Balance Check</h2>
 
-      {/* Modal */}
-      <div className="relative z-10 w-full max-w-2xl rounded-2xl bg-white p-6 shadow-xl">
-        
-        {/* HEADER */}
-        <div className="mb-5 flex items-start justify-between">
-          <div>
-            <h2 className="text-xl font-semibold text-gray-900">
-              Gift Card Balance
-            </h2>
-            <p className="text-sm text-gray-500">
-              Check your card balance instantly
-            </p>
-          </div>
+        <p className="text-gray-600">Selected Gift Card Value:</p>
 
-          <button
-            onClick={onClose}
-            className="text-gray-500 hover:text-black"
-          >
-            ✕
-          </button>
+        <div className="text-3xl font-bold text-orange-700 mt-3 mb-6">
+          ${amount}
         </div>
 
-        {/* BODY */}
-        {!results ? (
-          <GiftCardBalanceForm
-            onSubmit={handleSubmit}
-            onCancel={onClose}
-          />
-        ) : (
-          <div className="space-y-4">
-            
-            <h3 className="text-lg font-semibold">
-              Results
-            </h3>
+        <div className="flex justify-end gap-3">
+          <button onClick={onClose} className="px-5 py-2 rounded-lg border">
+            Cancel
+          </button>
 
-            {results.map((r, i) => (
-              <div
-                key={i}
-                className="rounded-xl border border-gray-200 p-4"
-              >
-                <p className="text-sm text-gray-500">
-                  Card Ending •••• {r.cardNumber.slice(-4)}
-                </p>
+          <button
+            onClick={onConfirm}
+            disabled={loading}
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-orange-700 px-5 py-3 text-white hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            {loading && <Loader2 className="h-4 w-4 animate-spin" />}
 
-                {r.error ? (
-                  <p className="text-red-500 text-sm mt-2">
-                    {r.error}
-                  </p>
-                ) : (
-                  <p className="text-green-600 font-semibold mt-2 text-lg">
-                    ${r.balance}
-                  </p>
-                )}
-              </div>
-            ))}
-
-            {/* ACTIONS */}
-            <div className="flex justify-end gap-3 pt-4">
-              
-              <button
-                onClick={reset}
-                className="rounded-lg px-4 py-2 text-sm text-gray-600 hover:bg-gray-100"
-              >
-                Check Another Card
-              </button>
-
-              <button
-                onClick={onClose}
-                className="rounded-lg bg-black px-4 py-2 text-sm text-white hover:bg-gray-900"
-              >
-                Close
-              </button>
-            </div>
-          </div>
-        )}
+            {loading ? "Submitting..." : "Continue"}
+          </button>
+        </div>
       </div>
     </div>
   );
