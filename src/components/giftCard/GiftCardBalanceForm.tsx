@@ -153,7 +153,7 @@ export default function GiftCardBalanceForm({
 };
   return (
     <>
-      <div className="min-h-screen bg-gray-50 py-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 py-6 lg:px-12">
         <div className="mx-auto w-full  overflow-hidden rounded-3xl bg-white ">
           {/* Header */}
           <div className="border-b px-5 py-8 text-center sm:px-8 lg:px-16">
@@ -195,7 +195,7 @@ export default function GiftCardBalanceForm({
           {/* Body */}
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left */}
-            <div className="relative h-[350px] sm:h-[700px] lg:min-h-[750px]">
+            <div className="relative h-[350px] sm:h-[700px] lg:min-h-[750px] ">
               <img
                 src="/images/card.png"
                 alt="Gift Card"
