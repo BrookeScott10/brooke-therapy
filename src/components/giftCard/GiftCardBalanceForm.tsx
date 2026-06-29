@@ -153,7 +153,7 @@ export default function GiftCardBalanceForm({
 };
   return (
     <>
-      <div className="min-h-screen bg-gray-50 py-6 lg:px-4">
+      <div className="bg-white">
         <div className="mx-auto w-full  overflow-hidden rounded-3xl bg-white ">
           {/* Header */}
           <div className="border-b px-5 py-8 text-center sm:px-8 lg:px-16">
@@ -166,38 +166,14 @@ export default function GiftCardBalanceForm({
               available balances.
             </p>
 
-            <div className="mt-8">
-              <h4 className="text-lg font-semibold">
-                We Accept
-              </h4>
-
-              <div className="mt-4 flex flex-wrap justify-center gap-3">
-                {[
-                  "Chime",
-                  "Cash App",
-                  "Cash (regular clients only)",
-                  "Bitcoin",
-                  "Gift Card",
-                  "Zelle",
-                  "Apple Pay",
-                ].map((method) => (
-                  <div
-                    key={method}
-                    className="rounded-full bg-black px-4 py-2 text-xs text-white sm:text-sm"
-                  >
-                    {method}
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
 
           {/* Body */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:mx-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left */}
-            <div className="relative h-[350px] sm:h-[700px] lg:min-h-[750px]">
+            <div className="relative  h-[350px] sm:h-[700px]  lg:min-h-[750px]">
               <img
-                src="/images/card.png"
+                src="/images/card2.png"
                 alt="Gift Card"
                 className="absolute inset-0 h-full w-full object-cover"
               />

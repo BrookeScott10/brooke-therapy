@@ -5,8 +5,6 @@ import { Leaf } from "lucide-react";
 export default function Footer() {
   const paymentMethods = [
     { name: "Chime", icon: "/payments/chime.png" },
-    { name: "Cash App", icon: "/payments/cashapp.png" },
-    { name: "Cash (In Person Only)", icon: "/payments/cash.png" },
     { name: "Bitcoin", icon: "/payments/bitcoin.png" },
     { name: "Gift Card", icon: "/payments/giftcard.png" },
     { name: "Zelle", icon: "/payments/zelle.png" },
@@ -91,39 +89,51 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* PAYMENT METHODS */}
-        {/* <div className="mt-10 border-t border-spa-cream/20 pt-10">
-          <h4 className="font-serif text-lg mb-5">We Accept</h4>
-
-          <div className="flex flex-wrap gap-4 items-center">
-            {paymentMethods.map((method) => (
-              <div
-                key={method.name}
-                className="flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2 rounded-full"
-              >
-                <Image
-                  src={method.icon}
-                  alt={method.name}
-                  width={18}
-                  height={18}
-                  className="object-contain"
-                />
-                <span className="text-xs text-spa-cream/80 whitespace-nowrap">
-                  {method.name}
-                </span>
-              </div>
-            ))}
-          </div>
-        </div> */}
-
         {/* BOTTOM BAR */}
-        <div className="border-t border-spa-cream/20 pt-8 mt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+       {/* BOTTOM BAR */}
+<div className="border-t border-spa-cream/20 pt-8 mt-10 flex flex-col lg:flex-row items-center justify-between gap-6">
 
-          <p className="text-sm opacity-80">
-            © {new Date().getFullYear()} Massage Therapy by Brooke. All rights reserved.
-          </p>
+  {/* Copyright */}
+  <p className="text-sm opacity-80 text-center lg:text-left">
+    © {new Date().getFullYear()} Massage Therapy by Brooke. All rights reserved.
+  </p>
 
-        </div>
+  {/* Payment Methods */}
+ <div className="flex flex-col sm:flex-row items-center gap-3">
+  <span className="text-sm font-medium whitespace-nowrap">
+    We Accept:
+  </span>
+
+  <div className="flex flex-wrap items-center justify-center gap-3">
+    {paymentMethods.map((method) => (
+      <div
+        key={method.name}
+        className="flex h-11 w-16 items-center justify-center rounded-lg bg-white p-2 shadow-sm transition-transform hover:scale-105"
+        title={method.name}
+      >
+        <Image
+          src={method.icon}
+          alt={method.name}
+          width={48}
+          height={28}
+          className="h-auto max-h-7 w-auto object-contain"
+        />
+      </div>
+    ))}
+
+    {/* Cash Badge */}
+    <div
+      className="rounded-lg bg-black px-4 py-2 text-center text-xs font-medium leading-tight text-white"
+      title="Cash accepted for regular clients only"
+    >
+      <div>Cash</div>
+      <div className="text-[10px] text-gray-300">
+        Regular Clients Only
+      </div>
+    </div>
+  </div>
+</div>
+</div>
       </div>
     </footer>
   );
