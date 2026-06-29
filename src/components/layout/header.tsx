@@ -108,35 +108,71 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile Menu */}
-          {isMobileMenuOpen && (
-            <nav className="lg:hidden mt-4 pb-4 border-t border-spa-orange/20 pt-4 space-y-2 uppercase">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block py-3 px-2 rounded-md text-base transition-colors ${
-                    pathname === link.href
-                      ? "text-white"
-                      : "text-white hover:text-spa-orange"
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              ))}
+         {/* Mobile Menu Overlay */}
+{isMobileMenuOpen && (
+  <div className="fixed inset-0 z-50 bg-black/70 flex items-start justify-center px-4">
+    
+    {/* Card */}
+    <div className="w-full rounded-2xl bg-black border border-white/10 shadow-2xl overflow-hidden">
+      
+      {/* TOP BAR (LOGO + CLOSE INSIDE CARD) */}
+      <div className="flex items-center justify-between px-5 py-4 border-b border-white/10">
+        
+        {/* Logo */}
+        <Link
+          href="/"
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="flex items-center gap-2"
+        >
+          <div className="w-8 h-8 rounded-full bg-spa-orange flex items-center justify-center">
+            <Leaf className="w-4 h-4 text-spa-cream" />
+          </div>
 
-              <Button
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setIsBookingOpen(true);
-                }}
-                className="mt-4 w-full bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full py-3"
-              >
-                Book Appointment
-              </Button>
-            </nav>
-          )}
+          <span className="text-white font-serif text-base font-semibold">
+            Massage Therapy
+          </span>
+        </Link>
+
+        {/* Close */}
+        <button
+          onClick={() => setIsMobileMenuOpen(false)}
+          className="text-white"
+        >
+          <X className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* NAV LINKS */}
+      <div className="flex flex-col space-y-2 px-5 py-6 uppercase">
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            onClick={() => setIsMobileMenuOpen(false)}
+            className={`py-3 px-3 rounded-lg transition-colors text-sm ${
+              pathname === link.href
+                ? "text-spa-orange bg-white/5"
+                : "text-white hover:text-spa-orange hover:bg-white/5"
+            }`}
+          >
+            {link.name}
+          </Link>
+        ))}
+
+        {/* CTA */}
+        <Button
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            setIsBookingOpen(true);
+          }}
+          className="mt-4 w-full bg-spa-orange hover:bg-spa-orange-light text-white rounded-full py-3"
+        >
+          Book Appointment
+        </Button>
+      </div>
+    </div>
+  </div>
+)}
         </div>
       </header>
 

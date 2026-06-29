@@ -150,7 +150,7 @@ const handleSubmit = () => {
     {[
       "Chime",
       "Cash App",
-      "Cash (In Person Only)",
+      "Cash (regular clients only)",
       "Bitcoin",
       "Gift Card",
       "Zelle",

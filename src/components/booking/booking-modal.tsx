@@ -7,11 +7,11 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useContact } from "@/hooks/use-contact";
 
-
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+
 const services = [
   { id: "swedish-massage", name: "SWEDISH MASSAGE" },
   { id: "deep-tissue-massage", name: "DEEP TISSUE MASSAGE" },
@@ -26,137 +26,127 @@ const bookingOptions = [
   { id: "2-hours", duration: "2 HOURS", price: "$450.00" },
   { id: "3-hours", duration: "3 HOURS", price: "$550.00" },
   { id: "4-6-hours", duration: "4–6 HOURS", price: "$750.00" },
-  {
-    id: "10-12-hours",
-    duration: "10–12 HOURS (OVERNIGHT/DAY)",
-    price: "$1,000.00",
-  },
+  { id: "10-12-hours", duration: "10–12 HOURS (OVERNIGHT/DAY)", price: "$1,000.00" },
 ];
+
+// ✅ FULL TIME FORMAT
 const timeSlots = [
-  "9:00 AM",
-  "10:00 AM",
-  "11:00 AM",
-  "12:00 PM",
-  "1:00 PM",
-  "2:00 PM",
-  "3:00 PM",
-  "4:00 PM",
-  "5:00 PM",
+  "9:00AM",
+  "10:00AM",
+  "11:00AM",
+  "12:00PM",
+  "1:00PM",
+  "2:00PM",
+  "3:00PM",
+  "4:00PM",
+  "5:00PM",
 ];
 
 export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   const [step, setStep] = useState(1);
+
   const [selectedService, setSelectedService] = useState("");
   const [selectedBooking, setSelectedBooking] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+
   const [selectedTime, setSelectedTime] = useState("");
+  const [customTime, setCustomTime] = useState("");
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     notes: "",
   });
+
   const { mutate, isPending } = useContact();
   const [isSuccess, setIsSuccess] = useState(false);
 
+  const finalTime = customTime || selectedTime;
+
   const handleSubmit = () => {
     const selectedDuration = bookingOptions.find(
-      (b) => b.id === selectedBooking,
+      (b) => b.id === selectedBooking
     );
 
     mutate(
       {
         type: "booking",
-
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-
-        service: services.find((s) => s.id === selectedService)?.name ?? "",
-
+        service:
+          services.find((s) => s.id === selectedService)?.name ?? "",
         duration: selectedDuration?.duration ?? "",
         price: selectedDuration?.price ?? "",
-
         date: selectedDate,
-        time: selectedTime,
-
+        time: finalTime,
         notes: formData.notes,
       },
       {
-        onSuccess: () => {
-          setIsSuccess(true);
-        },
-
-        onError: (error) => {
-          alert(error.message);
-        },
-      },
+        onSuccess: () => setIsSuccess(true),
+        onError: (error) => alert(error.message),
+      }
     );
   };
 
-  const resetForm = () => {
+  const reset = () => {
     setStep(1);
     setSelectedService("");
+    setSelectedBooking("");
     setSelectedDate("");
     setSelectedTime("");
-    setSelectedBooking("");
+    setCustomTime("");
     setFormData({ name: "", email: "", phone: "", notes: "" });
     setIsSuccess(false);
   };
 
-  const handleClose = () => {
-    resetForm();
+  const close = () => {
+    reset();
     onClose();
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
+      {/* BACKDROP */}
       <div
-        className="absolute inset-0 bg-spa-brown/60 backdrop-blur-sm"
-        onClick={handleClose}
+        className="absolute inset-0 bg-black/60"
+        onClick={close}
       />
 
-      {/* Modal */}
-      <div className="relative bg-spa-cream rounded-3xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl">
-        {/* Close Button */}
+      {/* MODAL */}
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-spa-cream rounded-3xl shadow-2xl">
+
+        {/* CLOSE */}
         <button
-          onClick={handleClose}
-          className="absolute top-4 right-4 p-2 rounded-full hover:bg-spa-beige transition-colors z-10"
-          aria-label="Close modal"
+          onClick={close}
+          className="absolute top-4 right-4 p-2"
         >
-          <X className="w-5 h-5 text-spa-brown" />
+          <X className="w-5 h-5" />
         </button>
 
-        {/* Header */}
-        <div className="p-6 md:p-8 border-b border-spa-beige">
-          <h2 className="font-serif text-2xl md:text-3xl text-spa-brown">
-            Book Your Appointment
-          </h2>
-          <p className="text-spa-brown/70 mt-2">
-            Schedule your relaxation journey with Brooke
-          </p>
+        {/* HEADER */}
+        <div className="p-8 border-b">
+          <h2 className="text-2xl font-serif">Book Appointment</h2>
 
-          {/* Progress Steps */}
+          {/* STEP INDICATOR (FIXED ALIGNMENT) */}
           {!isSuccess && (
-            <div className="flex items-center gap-2 mt-6">
+            <div className="flex gap-3 mt-6 ml-2">
               {[1, 2, 3].map((s) => (
                 <div key={s} className="flex items-center">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-medium transition-colors ${
+                    className={`w-8 h-8 rounded-full flex items-center justify-center ${
                       step >= s
-                        ? "bg-spa-orange text-spa-cream"
-                        : "bg-spa-beige text-spa-brown/50"
+                        ? "bg-orange-500 text-white"
+                        : "bg-gray-200"
                     }`}
                   >
                     {s}
                   </div>
                   {s < 3 && (
-                    <div
-                      className={`w-12 h-0.5 mx-1 ${step > s ? "bg-spa-orange" : "bg-spa-beige"}`}
-                    />
+                    <div className="w-10 h-0.5 bg-gray-300 mx-1" />
                   )}
                 </div>
               ))}
@@ -164,186 +154,109 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
           )}
         </div>
 
-        {/* Content */}
-        <div className="p-6 md:p-8">
+        {/* BODY */}
+        <div className="p-8">
+
+          {/* SUCCESS */}
           {isSuccess ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-spa-sage rounded-full flex items-center justify-center mx-auto mb-6">
-                <svg
-                  className="w-8 h-8 text-spa-cream"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-              <h3 className="font-serif text-2xl text-spa-brown mb-4">
-                Booking Confirmed!
-              </h3>
-              <p className="text-spa-brown/70 mb-6">
-                Thank you for booking with Massage Therapy by Brooke. We&apos;ve
-                sent a confirmation email to {formData.email}
-              </p>
-              <div className="bg-spa-beige/50 rounded-2xl p-6 text-left max-w-md mx-auto mb-8">
-                <h4 className="font-medium text-spa-brown mb-4">
-                  Appointment Details
-                </h4>
-                <div className="space-y-2 text-sm">
-                  <p>
-                    <span className="font-medium text-spa-brown">Massage:</span>{" "}
-                    {services.find((s) => s.id === selectedService)?.name}
-                  </p>
-
-                  <p>
-                    <span className="font-medium text-spa-brown">
-                      Duration:
-                    </span>{" "}
-                    {
-                      bookingOptions.find((b) => b.id === selectedBooking)
-                        ?.duration
-                    }
-                  </p>
-
-                  <p>
-                    <span className="font-medium text-spa-brown">Price:</span>{" "}
-                    {
-                      bookingOptions.find((b) => b.id === selectedBooking)
-                        ?.price
-                    }
-                  </p>
-                  <p className="text-spa-brown/70">
-                    <span className="font-medium text-spa-brown">Date:</span>{" "}
-                    {selectedDate}
-                  </p>
-                  <p className="text-spa-brown/70">
-                    <span className="font-medium text-spa-brown">Time:</span>{" "}
-                    {selectedTime}
-                  </p>
-                  <p className="text-spa-brown/70">
-                    <span className="font-medium text-spa-brown">Name:</span>{" "}
-                    {formData.name}
-                  </p>
-                </div>
-              </div>
-              <Button
-                onClick={handleClose}
-                className="bg-spa-orange hover:bg-spa-orange-light text-spa-cream px-8 py-3 rounded-full"
-              >
-                Done
-              </Button>
+            <div className="text-center">
+              <h3 className="text-xl mb-4">Booking Confirmed</h3>
+              <Button onClick={close}>Done</Button>
             </div>
           ) : (
             <>
-              {/* Step 1: Select Service */}
+              {/* STEP 1 */}
               {step === 1 && (
-                <div>
-                  <h3 className="font-serif text-xl text-spa-brown mb-4">
-                    SELECT A MASSAGE
+                <div className="space-y-6">
+                  <h3 className="font-semibold">Select Service</h3>
+
+                  {services.map((s) => (
+                    <button
+                      key={s.id}
+                      onClick={() => setSelectedService(s.id)}
+                      className={`w-full p-4 border rounded-xl text-start ${
+                        selectedService === s.id
+                          ? "border-orange-500"
+                          : ""
+                      }`}
+                    >
+                      {s.name}
+                    </button>
+                  ))}
+
+                  <h3 className="font-semibold mt-6">
+                    Select Duration
                   </h3>
 
-                  <div className="grid gap-3 mb-8">
-                    {services.map((service) => (
-                      <button
-                        key={service.id}
-                        onClick={() => setSelectedService(service.id)}
-                        className={`p-4 rounded-xl border-2 transition-all text-left ${
-                          selectedService === service.id
-                            ? "border-spa-orange bg-spa-orange/5"
-                            : "border-spa-beige hover:border-spa-orange/50"
-                        }`}
-                      >
-                        <h4 className="font-medium text-spa-brown">
-                          {service.name}
-                        </h4>
-                      </button>
-                    ))}
-                  </div>
-
-                  <h3 className="font-serif text-xl text-spa-brown mb-4">
-                    SELECT A DURATION
-                  </h3>
-
-                  <div className="grid gap-3">
-                    {bookingOptions.map((option) => (
-                      <button
-                        key={option.id}
-                        onClick={() => setSelectedBooking(option.id)}
-                        className={`flex items-center justify-between p-4 rounded-xl border-2 transition-all text-left ${
-                          selectedBooking === option.id
-                            ? "border-spa-orange bg-spa-orange/5"
-                            : "border-spa-beige hover:border-spa-orange/50"
-                        }`}
-                      >
-                        <span className="font-medium text-spa-brown">
-                          {option.duration}
-                        </span>
-
-                        <span className="font-semibold text-spa-orange">
-                          {option.price}
-                        </span>
-                      </button>
-                    ))}
-                  </div>
+                  {bookingOptions.map((b) => (
+                    <button
+                      key={b.id}
+                      onClick={() => setSelectedBooking(b.id)}
+                      className="flex justify-between w-full p-4 border rounded-xl"
+                    >
+                      <span>{b.duration}</span>
+                      <span>{b.price}</span>
+                    </button>
+                  ))}
                 </div>
               )}
 
-              {/* Step 2: Select Date & Time */}
+              {/* STEP 2 */}
               {step === 2 && (
-                <div>
-                  <h3 className="font-serif text-xl text-spa-brown mb-4">
-                    Choose Date & Time
+                <div className="space-y-6">
+                  <div>
+                       <h3 className="font-serif text-xl text-spa-brown">
+                    Date
+                  </h3>
+                    <Input
+                      type="date"
+                      value={selectedDate}
+                      onChange={(e) =>
+                        setSelectedDate(e.target.value)
+                      }
+                    />
+                  </div>
+
+                  <div>
+                       <h3 className="font-serif text-xl text-spa-brown">
+                    Pick a Time
                   </h3>
 
-                  <div className="space-y-6">
-                    <div>
-                      <Label
-                        htmlFor="date"
-                        className="text-spa-brown flex items-center gap-2 mb-2"
-                      >
-                        <Calendar className="w-4 h-4" /> Select Date
-                      </Label>
+                    <div className="grid grid-cols-3 gap-2 mt-2">
+                      {timeSlots.map((t) => (
+                        <button
+                          key={t}
+                          onClick={() => {
+                            setSelectedTime(t);
+                            setCustomTime("");
+                          }}
+                          className="p-2 border rounded"
+                        >
+                          {t}
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* CUSTOM TIME */}
+                    <div className="mt-4">
+                         <h3 className="font-serif text-xl text-spa-brown">
+                    Choose Your Prefrred Time
+                  </h3>
                       <Input
-                        id="date"
-                        type="date"
-                        value={selectedDate}
-                        onChange={(e) => setSelectedDate(e.target.value)}
-                        min={new Date().toISOString().split("T")[0]}
-                        className="w-full border-spa-beige rounded-xl focus:border-spa-orange focus:ring-spa-orange"
+                        type="time"
+                        value={customTime}
+                        onChange={(e) => {
+                          setCustomTime(e.target.value);
+                          setSelectedTime("");
+                        }}
                       />
                     </div>
-
-                    <div>
-                      <Label className="text-spa-brown flex items-center gap-2 mb-2">
-                        <Clock className="w-4 h-4" /> Select Time
-                      </Label>
-                      <div className="grid grid-cols-3 gap-2">
-                        {timeSlots.map((time) => (
-                          <button
-                            key={time}
-                            onClick={() => setSelectedTime(time)}
-                            className={`py-2 px-3 rounded-lg text-sm font-medium transition-colors ${
-                              selectedTime === time
-                                ? "bg-spa-orange text-spa-cream"
-                                : "bg-spa-beige/50 text-spa-brown hover:bg-spa-beige"
-                            }`}
-                          >
-                            {time}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </div>
               )}
 
-              {/* Step 3: Contact Details */}
-              {step === 3 && (
+              {/* STEP 3 */}
+                 {step === 3 && (
                 <div>
                   <h3 className="font-serif text-xl text-spa-brown mb-4">
                     Your Details
@@ -428,28 +341,24 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 </div>
               )}
 
-              {/* Navigation */}
-              <div className="flex justify-between mt-8 pt-6 border-t border-spa-beige">
-                {step > 1 ? (
-                  <Button
-                    variant="outline"
-                    onClick={() => setStep(step - 1)}
-                    className="border-spa-brown/30 text-spa-brown hover:bg-spa-beige rounded-full px-6 bg-transparent"
-                  >
+              {/* NAVIGATION */}
+              <div className="flex justify-between mt-8">
+                {step > 1 && (
+                  <Button onClick={() => setStep(step - 1)}>
                     Back
                   </Button>
-                ) : (
-                  <div />
                 )}
 
                 {step < 3 ? (
                   <Button
                     onClick={() => setStep(step + 1)}
                     disabled={
-                      (step === 1 && (!selectedService || !selectedBooking)) ||
-                      (step === 2 && (!selectedDate || !selectedTime))
+                      (step === 1 &&
+                        (!selectedService || !selectedBooking)) ||
+                      (step === 2 &&
+                        (!selectedDate ||
+                          (!selectedTime && !customTime)))
                     }
-                    className="bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full px-8 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     Continue
                   </Button>
@@ -462,9 +371,8 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       !formData.phone ||
                       isPending
                     }
-                    className="bg-spa-orange hover:bg-spa-orange-light text-spa-cream rounded-full px-8"
                   >
-                    {isPending ? "Booking..." : "Confirm Booking"}
+                    {isPending ? "Booking..." : "Confirm"}
                   </Button>
                 )}
               </div>
