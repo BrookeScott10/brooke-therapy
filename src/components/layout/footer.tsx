@@ -8,7 +8,7 @@ export default function Footer() {
     { name: "Bitcoin", icon: "/payments/bitcoin.png" },
     { name: "Gift Card", icon: "/payments/giftcard.png" },
     { name: "Zelle", icon: "/payments/zelle.png" },
-    { name: "Cash App", icon: "/payments/acashapp.png" },
+    { name: "Cash App", icon: "/payments/cashapp.png" },
   ];
 
   return (
