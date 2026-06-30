@@ -22,7 +22,7 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/70 to-spa-brown/50" />
         </div>
 
-        <div className="relative flex flex-col justify-center pt-24 md:pt-32 max-w-[1236px] mx-auto px-4 w-full space-y-4">
+        <div className="relative flex flex-col justify-center pt-24 md:pt-32 max-w-[1236px] mx-auto px-2 w-full space-y-4">
           <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-spa-cream tracking-wide">
             BROOKE&apos;S STUDIO
           </h1>
@@ -34,22 +34,22 @@ export default function HeroSection() {
               awareness to life. Treating you with each session.
             </p>
 
-           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-  <Link href="/contact" className="w-full sm:w-auto">
-    <Button className="w-full border border-white bg-spa-orange py-4 px-10 hover:bg-spa-orange-light text-spa-cream rounded-full text-base font-medium inline-flex items-center justify-center gap-2">
-      Contact Me Today
-      <ArrowRight className="w-4 h-4" />
-    </Button>
-  </Link>
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <Link href="/contact" className="w-full sm:w-auto">
+                <Button className="w-full border border-white bg-spa-orange py-4 px-10 hover:bg-spa-orange-light text-spa-cream rounded-full text-base font-medium inline-flex items-center justify-center gap-2">
+                  Contact Me Today
+                  <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
 
-  <Button
-    variant="outline"
-    onClick={() => setGiftCardOpen(true)}
-    className="w-full sm:w-auto border border-white bg-spa-orange py-4 px-10 text-white hover:bg-white hover:text-spa-brown rounded-full text-base font-medium"
-  >
-    Check Gift Card Balance
-  </Button>
-</div>
+              <Button
+                variant="outline"
+                onClick={() => setGiftCardOpen(true)}
+                className="w-full sm:w-auto border border-white bg-spa-orange py-4 px-10 text-white hover:bg-white hover:text-spa-brown rounded-full text-base font-medium"
+              >
+                Check Gift Card Balance
+              </Button>
+            </div>
           </div>
         </div>
       </section>
