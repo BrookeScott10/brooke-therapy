@@ -257,7 +257,7 @@ useEffect(() => {
   }, [filter, sort]);
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-12">
+    <section id="reviews" className="mx-auto max-w-7xl px-4 py-12">
       {/* Heading */}
 
       <h2 className="mb-5 text-3xl font-semibold text-gray-900">Reviews</h2>

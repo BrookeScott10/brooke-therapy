@@ -67,7 +67,7 @@ export default function RateCardSection() {
 
   return (
     <>
-      <section className="bg-[#c5d0ad] py-20">
+      <section  className="bg-[#c5d0ad] py-20">
         <div className="mx-auto max-w-7xl px-6">
           {/* Header */}
           <div className="mb-14 text-center">

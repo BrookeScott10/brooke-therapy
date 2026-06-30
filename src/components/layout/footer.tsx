@@ -99,7 +99,7 @@ export default function Footer() {
   </p>
 
   {/* Payment Methods */}
- <div className="flex flex-col sm:flex-row items-center gap-3">
+ <section id="payment-methods" className="flex flex-col sm:flex-row items-center gap-3">
   <span className="text-sm font-medium whitespace-nowrap">
     We Accept:
   </span>
@@ -132,7 +132,7 @@ export default function Footer() {
       </div>
     </div>
   </div>
-</div>
+</section>
 </div>
       </div>
     </footer>

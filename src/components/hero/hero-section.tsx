@@ -35,20 +35,33 @@ export default function HeroSection() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Link href="/contact" className="w-full sm:w-auto">
-                <Button className="w-full border border-white bg-spa-orange py-4 px-10 hover:bg-spa-orange-light text-spa-cream rounded-full text-base font-medium inline-flex items-center justify-center gap-2">
-                  Contact Me Today
-                  <ArrowRight className="w-4 h-4" />
+              <div className="">
+                <Button
+                  variant="outline"
+                  onClick={() => setGiftCardOpen(true)}
+                  className=" border border-white bg-spa-orange md:py-5 hover:bg-spa-orange-light text-spa-cream rounded-full text-base font-medium inline-flex items-center justify-center gap-2"
+                >
+                  Check Gift Card Balance
+                </Button>
+              </div>
+
+              <Link href="#reviews" className="">
+                <Button
+                  variant="outline"
+                  className="border border-white bg-spa-orange px-9 md:py-5 text-white hover:bg-white hover:text-spa-brown rounded-full text-base font-medium"
+                >
+                  Customer Reviews
                 </Button>
               </Link>
 
-              <Button
-                variant="outline"
-                onClick={() => setGiftCardOpen(true)}
-                className="w-full sm:w-auto border border-white bg-spa-orange py-4 px-10 text-white hover:bg-white hover:text-spa-brown rounded-full text-base font-medium"
-              >
-                Check Gift Card Balance
-              </Button>
+              <Link href="#payment-methods">
+                <Button
+                  variant="outline"
+                  className=" border border-white bg-spa-orange md:py-5 px-9 text-white hover:bg-white hover:text-spa-brown rounded-full text-base font-medium"
+                >
+                  Payment Methods
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
