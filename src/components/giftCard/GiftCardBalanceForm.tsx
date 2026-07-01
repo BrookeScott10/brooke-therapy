@@ -34,7 +34,7 @@ export default function GiftCardBalanceForm({
   const [denomination, setDenomination] = useState<number | null>(null);
   const [errors, setErrors] = useState<Record<number, string>>({});
   const [denominationError, setDenominationError] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [successModal, setSuccessModal] = useState(false);
 
   const { mutate, isPending } = useGiftCardCheck();
 
@@ -112,20 +112,21 @@ export default function GiftCardBalanceForm({
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
-    setDenominationError("");
+ const handleSubmit = () => {
+  setDenominationError("");
 
-    if (!denomination) {
-      setDenominationError("Please select a gift card value.");
-      return;
-    }
+  if (!denomination) {
+    setDenominationError("Please select a gift card value.");
+    return;
+  }
 
-    if (!validate()) return;
+  if (!validate()) return;
 
-    setShowModal(true);
-  };
+  confirmSubmit();
+};
 
- const confirmSubmit = () => {
+
+const confirmSubmit = () => {
   mutate(
     {
       cards,
@@ -133,14 +134,7 @@ export default function GiftCardBalanceForm({
     },
     {
       onSuccess: () => {
-        setShowModal(false);
-
-        toast.success("Gift card submitted successfully.");
-
-        onSubmit?.({
-          cards,
-          denomination,
-        });
+        setSuccessModal(true);
       },
 
       onError: (error: any) => {
@@ -250,13 +244,22 @@ export default function GiftCardBalanceForm({
         </div>
       </div>
 
-  <BalanceConfirmModal
-  open={showModal}
+<BalanceConfirmModal
+  open={successModal}
   amount={denomination}
-  loading={isPending}
-  onClose={() => !isPending && setShowModal(false)}
-  onConfirm={confirmSubmit}
+  onClose={() => {
+    setSuccessModal(false);
+
+    onSubmit?.({
+      cards,
+      denomination,
+    });
+
+    onCancel();
+  }}
 />
+
+
     </>
   );
 }
