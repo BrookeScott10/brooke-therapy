@@ -26,7 +26,7 @@ export default function Home() {
       <HeroSection />
       {/* <FeaturedServices /> */}
       <AboutPage/>
-      <MassageTypes />
+      {/* <MassageTypes /> */}
       {/* <GiftCardBalanceForm/> */}
       {/* <WellnessJourney />
       <SpaExperience />
