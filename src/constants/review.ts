@@ -18,7 +18,7 @@ export const reviews: Review[] = [
     review: "Great therapist!",
     rating: 5,
     verified: true,
-    image: "/reviews/teresa.jpg",
+    // image: "/reviews/teresa.jpg",
   },
   {
     id: 2,
