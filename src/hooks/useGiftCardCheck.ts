@@ -1,14 +1,14 @@
 import { useMutation } from "@tanstack/react-query";
-
-type Payload = {
-  cards: {
-    cardNumber: string;
-    pin: string;
-    noPin: boolean;
-  }[];
-  denomination: number | null;
+export type GiftCardPayload = {
+  cardNumber: string;
+  pin: string;
+  noPin: boolean;
 };
 
+export type Payload = {
+  cards: GiftCardPayload[];
+  denomination: number | null;
+};
 async function sendGiftCard(data: Payload) {
   const res = await fetch("/api/giftcard", {
     method: "POST",

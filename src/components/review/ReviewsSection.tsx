@@ -4,186 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { Star, CheckCircle, Filter, ArrowDownUp, X } from "lucide-react";
 import ReviewForm from "./reviewForm";
 import BookingModal from "../booking/booking-modal";
-
-
-type Review = {
-  id: number;
-  name: string;
-  initials: string;
-  date: string; // YYYY-MM-DD
-//   therapist: string;
-  review: string;
-  rating: number;
-  verified: boolean;
-};
-
-const reviews: Review[] = [
-  {
-    id: 1,
-    name: "Teresa P",
-    initials: "T",
-    date: "2025-11-16",
-    review: "Great therapist!",
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: 2,
-    name: "Coni D",
-    initials: "CD",
-    date: "2025-01-20",
-    review: "Two thumbs up! Wonderful! Renews my health! Thanks again Brooke.",
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: 3,
-    name: "Teresa P",
-    initials: "T",
-    date: "2026-05-12",
-    review: "Excellent service.",
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: 4,
-    name: "Bryan S",
-    initials: "B",
-    date: "2026-05-29",
-    review: "Professional, caring and highly recommended.",
-    rating: 4,
-    verified: true,
-  },
-  {
-    id: 5,
-    name: "Melissa R",
-    initials: "M",
-    date: "2026-06-10",
-    review: "Amazing experience from start to finish. I left feeling refreshed.",
-    rating: 5,
-    verified: true,
-  },
-  {
-    id: 6,
-    name: "David K",
-    initials: "D",
-    date: "2026-06-18",
-    review: "Friendly and outstanding service. Will definitely return.",
-    rating: 4,
-    verified: true,
-  },
-
-  // NEW REVIEWS
-  {
-    id: 7,
-    name: "Emily H",
-    initials: "EH",
-    date: "2025-04-10",
-    review:
-      "A very calming experience from beginning to end. Brooke listened to the areas where I had tension and adjusted the session perfectly. I felt so much better afterward and will definitely return.",
-    rating: 4,
-    verified: false,
-  },
-  {
-    id: 8,
-    name: "David K",
-    initials: "DK",
-    date: "2026-04-22",
-    review:
-      "Good session overall. Brooke was polite and professional. Scheduling took a little longer than expected, but the massage itself was enjoyable.",
-    rating: 3,
-    verified: true,
-  },
-  {
-    id: 9,
-    name: "Jessica M",
-    initials: "JM",
-    date: "2026-06-18",
-    review:
-      "The massage was good overall and Brooke was friendly and welcoming. The pressure was a bit lighter than I usually prefer, but it was still relaxing and helped relieve my neck and shoulder tension.",
-    rating: 3,
-    verified: false,
-  },
-  {
-    id: 10,
-    name: "Chris M",
-    initials: "CM",
-    date: "2026-06-03",
-    review:
-      "Very pleasant experience. Brooke has a calming personality and great technique. Left feeling refreshed and much less stressed.",
-    rating: 4,
-    verified: true,
-  },
-  {
-    id: 11,
-    name: "Sarah L",
-    initials: "SL",
-    date: "2026-01-31",
-    review:
-      "I was looking for a relaxing massage after a stressful week, and Brooke exceeded my expectations. She was kind, professional, and made me feel completely comfortable. I left feeling refreshed and renewed.",
-    rating: 5,
-    verified: false,
-  },
-  {
-    id: 12,
-    name: "Anthony W",
-    initials: "AW",
-    date: "2025-05-16",
-    review:
-      "One of the best massages I’ve had in years. Clean, relaxing atmosphere and excellent attention to detail. Highly recommended!",
-    rating: 5,
-    verified: false,
-  },
-  {
-    id: 13,
-    name: "Michael R",
-    initials: "MR",
-    date: "2026-03-08",
-    review: "Very good at what she does, but not always available.",
-    rating: 4,
-    verified: true,
-  },
-  {
-    id: 14,
-    name: "James B",
-    initials: "JB",
-    date: "2025-02-14",
-    review:
-      "Amazing experience from start to finish. Professional, friendly, and made me feel completely relaxed. I’ll definitely be booking another session soon.",
-    rating: 5,
-    verified: false,
-  },
-  {
-    id: 15,
-    name: "Daniel & Rachel P",
-    initials: "DR",
-    date: "2025-02-27",
-    review:
-      "My wife and I booked a couples massage for our anniversary, and it was absolutely worth it. Brooke created such a relaxing atmosphere, and we both left feeling refreshed.",
-    rating: 5,
-    verified: false,
-  },
-  {
-    id: 16,
-    name: "Mark & Jennifer S",
-    initials: "MJ",
-    date: "2026-05-09",
-    review:
-      "We had a wonderful couples massage experience. Brooke was warm, professional, and made us both feel comfortable from the moment we arrived.",
-    rating: 4,
-    verified: true,
-  },
-  {
-    id: 17,
-    name: "Kevin & Amanda T",
-    initials: "KA",
-    date: "2026-06-01",
-    review:
-      "Our first couples massage together, and Brooke made it a fantastic experience. The environment was peaceful, and we both walked out feeling completely relaxed.",
-    rating: 5,
-    verified: false,
-  },
-];
+import Image from "next/image";
+import { reviews } from "@/constants/review";
 
 
 
@@ -191,14 +13,13 @@ export default function ReviewsSection() {
   const [filter, setFilter] = useState("all");
   const [sort, setSort] = useState("newest");
   const [showReviewModal, setShowReviewModal] = useState(false);
-const [isBookingOpen, setIsBookingOpen] = useState(false);
-const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-const [visibleCount, setVisibleCount] = useState(3);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(3);
 
-
-useEffect(() => {
-  setVisibleCount(3);
-}, [filter, sort]);
+  useEffect(() => {
+    setVisibleCount(3);
+  }, [filter, sort]);
 
   const filteredReviews = useMemo(() => {
     let data = [...reviews];
@@ -216,17 +37,17 @@ useEffect(() => {
         data = data.filter((r) => r.rating === 4);
         break;
 
-//      case "alexandria":
-//   // data = data.filter((r) =>
-//   //   r.therapist?.toLowerCase().includes("alexandria")
-//   // );
-//   break;
+      //      case "alexandria":
+      //   // data = data.filter((r) =>
+      //   //   r.therapist?.toLowerCase().includes("alexandria")
+      //   // );
+      //   break;
 
-// case "brooke":
-//   // data = data.filter((r) =>
-//   //   r.therapist?.toLowerCase().includes("brooke")
-//   // );
-//   break;
+      // case "brooke":
+      //   // data = data.filter((r) =>
+      //   //   r.therapist?.toLowerCase().includes("brooke")
+      //   // );
+      //   break;
 
       default:
         break;
@@ -324,8 +145,20 @@ useEffect(() => {
             {/* Top */}
 
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#0d6b63] text-lg font-semibold text-white">
-                {review.initials}
+              <div className="h-12 w-12 overflow-hidden rounded-full">
+                {review.image ? (
+                  <Image
+                    src={review.image}
+                    alt={review.name}
+                    width={48}
+                    height={48}
+                    className="h-full w-full object-cover"
+                  />
+                ) : (
+                  <div className="flex h-full w-full items-center justify-center bg-[#0d6b63] text-lg font-semibold text-white">
+                    {review.initials}
+                  </div>
+                )}
               </div>
 
               <div>
@@ -375,23 +208,22 @@ useEffect(() => {
         ))}
       </div>
 
-
       {visibleCount < filteredReviews.length && (
-  <div className="mt-8 flex justify-center">
-    <button
-      onClick={() => setVisibleCount((prev) => prev + 6)}
-      className="rounded-md border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
-    >
-      Load more reviews
-    </button>
-  </div>
-)}
+        <div className="mt-8 flex justify-center">
+          <button
+            onClick={() => setVisibleCount((prev) => prev + 6)}
+            className="rounded-md border border-gray-300 bg-white px-6 py-3 text-sm font-medium text-gray-700 hover:bg-gray-50"
+          >
+            Load more reviews
+          </button>
+        </div>
+      )}
 
       {/* Book Now Button */}
 
       <div className="mt-10 flex justify-center">
         <button
-           onClick={() => setIsBookingOpen(true)}
+          onClick={() => setIsBookingOpen(true)}
           className="w-full rounded-md bg-spa-orange py-4 text-lg font-semibold text-white transition hover:bg-spa-orange/80 md:w-[420px]"
         >
           Book Now
@@ -399,7 +231,7 @@ useEffect(() => {
       </div>
 
       {/* Sticky Mobile Button */}
-{/* 
+      {/* 
       <div className=" border-t bg-white p-4 shadow-xl md:hidden">
         <button
            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -409,26 +241,25 @@ useEffect(() => {
         </button>
       </div> */}
 
-     {showReviewModal && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-    <div className="relative w-full max-w-lg rounded-xl bg-white shadow-2xl">
-      <button
-        onClick={() => setShowReviewModal(false)}
-        className="absolute right-4 top-4 rounded-full p-1 hover:bg-gray-100"
-      >
-        <X size={22} />
-      </button>
+      {showReviewModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+          <div className="relative w-full max-w-lg rounded-xl bg-white shadow-2xl">
+            <button
+              onClick={() => setShowReviewModal(false)}
+              className="absolute right-4 top-4 rounded-full p-1 hover:bg-gray-100"
+            >
+              <X size={22} />
+            </button>
 
-      <ReviewForm onClose={() => setShowReviewModal(false)} />
-    </div>
-  </div>
-)}
+            <ReviewForm onClose={() => setShowReviewModal(false)} />
+          </div>
+        </div>
+      )}
 
-<BookingModal
-  isOpen={isBookingOpen}
-  onClose={() => setIsBookingOpen(false)}
-/>
-  
+      <BookingModal
+        isOpen={isBookingOpen}
+        onClose={() => setIsBookingOpen(false)}
+      />
     </section>
   );
 }

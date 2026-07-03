@@ -1,8 +1,8 @@
 export interface GiftCard {
   id: number;
   cardNumber: string;
-  pin: string;
-  noPin: boolean;
+  // pin: string;
+  // noPin: boolean;
 }
 
 export const denominations = [

