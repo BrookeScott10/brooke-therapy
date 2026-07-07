@@ -13,7 +13,6 @@ export default function HeroSection() {
   return (
     <>
       <section className="relative min-h-screen overflow-hidden flex items-center">
-
         {/* Background */}
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -24,7 +23,6 @@ export default function HeroSection() {
           <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/70 to-spa-brown/50" />
         </div>
 
-
         {/* Content */}
         <div
           className="
@@ -32,25 +30,20 @@ export default function HeroSection() {
             z-10
             flex
             flex-col
-
-            items-start
-            text-left
-
             max-w-5xl
             w-full
             mx-auto
-            px-6
+            px-4
 
-            md:items-center
-            md:text-center
+            items-center
+            text-center
           "
         >
-
           {/* Title */}
           <h1
             className="
               font-serif
-              text-3xl
+              text-4xl
               md:text-7xl
               lg:text-8xl
               text-spa-cream
@@ -58,10 +51,7 @@ export default function HeroSection() {
             "
           >
             <TypeAnimation
-              sequence={[
-                "BROOKE'S STUDIO",
-                3000,
-              ]}
+              sequence={["BROOKE'S STUDIO", 3000]}
               wrapper="span"
               speed={45}
               cursor={false}
@@ -69,23 +59,16 @@ export default function HeroSection() {
             />
           </h1>
 
-
           {/* Description */}
-          <Fade
-            delay={400}
-            duration={1200}
-            direction="up"
-            triggerOnce
-          >
+          <Fade delay={400} duration={1200} direction="up" triggerOnce>
             <p
               className="
                 mt-8
                 max-w-3xl
                 text-spa-cream/90
-                text-lg
-                md:text-xl
+                text-xl
+                md:text-2xl
                 leading-9
-
                 md:mx-auto
               "
             >
@@ -95,131 +78,64 @@ export default function HeroSection() {
             </p>
           </Fade>
 
-
           {/* Buttons */}
           <div
             className="
-              mt-12
-              flex
-              flex-col
-              gap-4
-
-              items-start
-
-              sm:flex-row
-
-              md:items-center
-              md:justify-center
-            "
+    mt-12
+    flex
+    flex-col
+    gap-4
+    w-full
+    items-stretch
+    sm:flex-row
+    sm:w-auto
+    sm:items-center
+    sm:justify-center
+  "
           >
-
             {/* Button 1 */}
-            <Slide
-              direction="up"
-              delay={900}
-              duration={900}
-              triggerOnce
-            >
+            <Slide direction="up" delay={900} duration={900} triggerOnce>
               <Button
                 variant="outline"
                 onClick={() => setGiftCardOpen(true)}
-                className="
-                  border
+                className="w-full sm:w-auto   border
                   border-white
                   bg-spa-orange
-                  hover:bg-spa-orange-light
-                  text-spa-cream
-                  rounded-full
-                  px-8
-                  md:py-6
-                  py-4
-                  text-base
-                  transition-all
-                  duration-500
-                  hover:-translate-y-1
-                  hover:shadow-xl
-                "
+                    hover:bg-white
+                    hover:text-spa-brown
+                    text-white
+                  px-8 py-6 text-lg font-semibold rounded-lg"
               >
                 Check Gift Card Balance
               </Button>
             </Slide>
 
-
             {/* Button 2 */}
-            <Slide
-              direction="up"
-              delay={1100}
-              duration={900}
-              triggerOnce
-            >
-              <Link href="#reviews">
+            <Slide direction="up" delay={1100} duration={900} triggerOnce>
+              <Link href="#reviews" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="
-                    border
-                    border-white
-                    bg-spa-orange
-                    hover:bg-white
-                    hover:text-spa-brown
-                    text-white
-                    rounded-full
-                    md:px-8
-                    px-13
-                    md:py-6
-                    py-4
-                    text-base
-                    transition-all
-                    duration-500
-                    hover:-translate-y-1
-                    hover:shadow-xl
-                  "
+                  className="w-full sm:w-auto border border-white bg-spa-orange hover:bg-white hover:text-spa-brown text-white px-8 py-6 text-lg font-semibold rounded-lg"
                 >
                   Customer Reviews
                 </Button>
               </Link>
             </Slide>
 
-
             {/* Button 3 */}
-            <Slide
-              direction="up"
-              delay={1300}
-              duration={900}
-              triggerOnce
-            >
-              <Link href="#payment-methods">
+            <Slide direction="up" delay={1300} duration={900} triggerOnce>
+              <Link href="#payment-methods" className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="
-                    border
-                    border-white
-                    bg-spa-orange
-                    hover:bg-white
-                    hover:text-spa-brown
-                    text-white
-                    rounded-full
-                    md:px-8
-                    px-13
-                    md:py-6
-                    py-4
-                    text-base
-                    transition-all
-                    duration-500
-                    hover:-translate-y-1
-                    hover:shadow-xl
-                  "
+                  className="w-full sm:w-auto border border-white bg-spa-orange hover:bg-white hover:text-spa-brown text-white px-8 py-6 text-lg font-semibold rounded-lg"
                 >
                   Payment Methods
                 </Button>
               </Link>
             </Slide>
-
           </div>
-
         </div>
-
       </section>
-
 
       <GiftCardBalancePopup
         open={giftCardOpen}
