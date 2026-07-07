@@ -5,7 +5,7 @@ type Review = {
   image?: string; // optional
   date: string;
   review: string;
-  rating: number;
+  rating?: number;
   verified: boolean;
 };
 
@@ -208,4 +208,58 @@ export const reviews: Review[] = [
     verified: false,
      image: "/reviews/Tim.jpg",
   },
+
+
+  {
+    id: 20,
+    name: " Sarah M ",
+    initials: "SM",
+    date: "2026-07-04",
+    review:
+      "I wasn’t sure what to expect, but it was honestly amazing. I left feeling so much better.",
+    // rating: 5,
+    verified: true,
+     image: "/reviews/Sarahb.jpg",
+  },
+
+
+
+  {
+    id: 21,
+    name: " Chris B ",
+    initials: "CB",
+    date: "2026-07-04",
+    review:
+      "Very professional and easy to talk to. The massage was exactly what I needed after a long week.",
+    // rating: 5,
+    verified: false,
+     image: "/reviews/Chris.jpg",
+  },
+
+
+  {
+    id: 22,
+    name: " Kevin L ",
+    initials: "KT",
+    date: "2026-07-05",
+    review:
+      "I felt relaxed.",
+    rating: 4,
+    verified: false,
+     image: "/reviews/Kevin.jpg",
+  },
+  {
+    id: 23,
+    name: " Brian J ",
+    initials: "BJ",
+    date: "2026-07-05",
+    review:
+      "Booked my session last minute and I’m glad I did. Everything was smooth.",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Brian.jpg",
+  },
+
+
+
 ];

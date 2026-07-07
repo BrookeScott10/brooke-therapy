@@ -157,3 +157,17 @@
   background: var(--spa-orange);
   border-radius: 4px;
 }
+
+@keyframes heroZoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+.animate-heroZoom {
+  animation: heroZoom 18s ease-in-out infinite alternate;
+}

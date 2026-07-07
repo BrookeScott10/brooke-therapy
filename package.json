@@ -9,6 +9,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
     "@hookform/resolvers": "^3.10.0",
     "@radix-ui/react-accordion": "1.2.2",
     "@radix-ui/react-alert-dialog": "1.1.4",
@@ -53,10 +54,12 @@
     "next": "16.0.7",
     "next-themes": "latest",
     "react": "18.3.1",
+    "react-awesome-reveal": "^4.3.1",
     "react-day-picker": "9.8.0",
     "react-dom": "18.3.1",
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^2.1.7",
+    "react-type-animation": "^3.2.0",
     "recharts": "2.15.4",
     "resend": "^6.16.0",
     "sonner": "^1.7.4",
