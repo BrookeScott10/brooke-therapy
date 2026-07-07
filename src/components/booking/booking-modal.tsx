@@ -26,7 +26,11 @@ const bookingOptions = [
   { id: "2-hours", duration: "2 HOURS", price: "$450.00" },
   { id: "3-hours", duration: "3 HOURS", price: "$550.00" },
   { id: "4-6-hours", duration: "4–6 HOURS", price: "$750.00" },
-  { id: "10-12-hours", duration: "10–12 HOURS (OVERNIGHT/DAY)", price: "$1,000.00" },
+  {
+    id: "10-12-hours",
+    duration: "10–12 HOURS (OVERNIGHT/DAY)",
+    price: "$1,000.00",
+  },
 ];
 
 // ✅ FULL TIME FORMAT
@@ -66,7 +70,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
   const handleSubmit = () => {
     const selectedDuration = bookingOptions.find(
-      (b) => b.id === selectedBooking
+      (b) => b.id === selectedBooking,
     );
 
     mutate(
@@ -75,8 +79,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
-        service:
-          services.find((s) => s.id === selectedService)?.name ?? "",
+        service: services.find((s) => s.id === selectedService)?.name ?? "",
         duration: selectedDuration?.duration ?? "",
         price: selectedDuration?.price ?? "",
         date: selectedDate,
@@ -86,7 +89,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
       {
         onSuccess: () => setIsSuccess(true),
         onError: (error) => alert(error.message),
-      }
+      },
     );
   };
 
@@ -111,19 +114,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-6">
       {/* BACKDROP */}
-      <div
-        className="absolute inset-0 bg-black/60"
-        onClick={close}
-      />
+      <div className="absolute inset-0 bg-black/60" onClick={close} />
 
       {/* MODAL */}
       <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-spa-cream rounded-3xl shadow-2xl">
-
         {/* CLOSE */}
-        <button
-          onClick={close}
-          className="absolute top-4 right-4 p-2"
-        >
+        <button onClick={close} className="absolute top-4 right-4 p-2">
           <X className="w-5 h-5" />
         </button>
 
@@ -138,16 +134,12 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                 <div key={s} className="flex items-center">
                   <div
                     className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                      step >= s
-                        ? "bg-orange-500 text-white"
-                        : "bg-gray-200"
+                      step >= s ? "bg-orange-500 text-white" : "bg-gray-200"
                     }`}
                   >
                     {s}
                   </div>
-                  {s < 3 && (
-                    <div className="w-10 h-0.5 bg-gray-300 mx-1" />
-                  )}
+                  {s < 3 && <div className="w-10 h-0.5 bg-gray-300 mx-1" />}
                 </div>
               ))}
             </div>
@@ -156,7 +148,6 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
         {/* BODY */}
         <div className="p-8">
-
           {/* SUCCESS */}
           {isSuccess ? (
             <div className="text-center">
@@ -175,24 +166,24 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                       key={s.id}
                       onClick={() => setSelectedService(s.id)}
                       className={`w-full p-4 border rounded-xl text-start ${
-                        selectedService === s.id
-                          ? "border-orange-500"
-                          : ""
+                        selectedService === s.id ? "border-orange-500" : ""
                       }`}
                     >
                       {s.name}
                     </button>
                   ))}
 
-                  <h3 className="font-semibold mt-6">
-                    Select Duration
-                  </h3>
+                  <h3 className="font-semibold mt-6">Select Duration</h3>
 
                   {bookingOptions.map((b) => (
                     <button
                       key={b.id}
                       onClick={() => setSelectedBooking(b.id)}
-                      className="flex justify-between w-full p-4 border rounded-xl"
+                      className={`flex justify-between w-full p-4 border rounded-xl ${
+                        selectedBooking === b.id
+                          ? "border-orange-500 bg-orange-50"
+                          : ""
+                      }`}
                     >
                       <span>{b.duration}</span>
                       <span>{b.price}</span>
@@ -205,22 +196,18 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               {step === 2 && (
                 <div className="space-y-6">
                   <div>
-                       <h3 className="font-serif text-xl text-spa-brown">
-                    Date
-                  </h3>
+                    <h3 className="font-serif text-xl text-spa-brown">Date</h3>
                     <Input
                       type="date"
                       value={selectedDate}
-                      onChange={(e) =>
-                        setSelectedDate(e.target.value)
-                      }
+                      onChange={(e) => setSelectedDate(e.target.value)}
                     />
                   </div>
 
                   <div>
-                       <h3 className="font-serif text-xl text-spa-brown">
-                    Pick a Time
-                  </h3>
+                    <h3 className="font-serif text-xl text-spa-brown">
+                      Pick a Time
+                    </h3>
 
                     <div className="grid grid-cols-3 gap-2 mt-2">
                       {timeSlots.map((t) => (
@@ -230,7 +217,11 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
                             setSelectedTime(t);
                             setCustomTime("");
                           }}
-                          className="p-2 border rounded"
+                          className={`p-2 border rounded ${
+                            selectedTime === t
+                              ? "border-orange-500 bg-orange-50"
+                              : ""
+                          }`}
                         >
                           {t}
                         </button>
@@ -239,10 +230,15 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
 
                     {/* CUSTOM TIME */}
                     <div className="mt-4">
-                         <h3 className="font-serif text-xl text-spa-brown">
-                    Choose Your Prefrred Time
-                  </h3>
+                      <h3 className="font-serif text-xl text-spa-brown">
+                        Choose Your Prefrred Time
+                      </h3>
                       <Input
+                        className={`${
+                          customTime
+                            ? "border-orange-500 ring-1 ring-orange-500"
+                            : ""
+                        }`}
                         type="time"
                         value={customTime}
                         onChange={(e) => {
@@ -256,7 +252,7 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               )}
 
               {/* STEP 3 */}
-                 {step === 3 && (
+              {step === 3 && (
                 <div>
                   <h3 className="font-serif text-xl text-spa-brown mb-4">
                     Your Details
@@ -344,20 +340,16 @@ export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
               {/* NAVIGATION */}
               <div className="flex justify-between mt-8">
                 {step > 1 && (
-                  <Button onClick={() => setStep(step - 1)}>
-                    Back
-                  </Button>
+                  <Button onClick={() => setStep(step - 1)}>Back</Button>
                 )}
 
                 {step < 3 ? (
                   <Button
                     onClick={() => setStep(step + 1)}
                     disabled={
-                      (step === 1 &&
-                        (!selectedService || !selectedBooking)) ||
+                      (step === 1 && (!selectedService || !selectedBooking)) ||
                       (step === 2 &&
-                        (!selectedDate ||
-                          (!selectedTime && !customTime)))
+                        (!selectedDate || (!selectedTime && !customTime)))
                     }
                   >
                     Continue

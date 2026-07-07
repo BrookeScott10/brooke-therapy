@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-
 import { Button } from "../ui/button";
 import GiftCardBalancePopup from "../giftCard/GiftCardBalancePopup";
 
