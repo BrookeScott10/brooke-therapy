@@ -75,7 +75,7 @@ export default function Header() {
 
         ${pathname === link.href ? "text-spa-orange" : getTextColor()}
 
-        ${isCTA ? "ml-2 rounded-full border border-spa-orange px-4 py-1.5 hover:bg-spa-orange hover:text-white" : ""}
+        ${isCTA ? "ml-2 rounded-full  px-4 py-1.5 hover:bg-spa-orange hover:text-white" : ""}
       `}
                   >
                     {link.name}

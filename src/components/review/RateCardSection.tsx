@@ -87,106 +87,103 @@ export default function RateCardSection() {
               const Icon = service.icon;
 
               return (
-                <Slide
-                  key={service.id}
-                  direction={index < 3 ? "right" : "left"}
-                  delay={index * 200}
-                  duration={1200}
-                  triggerOnce
-                >
-                  <div
-                    className="
-                      group
-                      flex
-                      h-full
-                      flex-col
-                      rounded-3xl
-                      bg-white
-                      p-8
-                      shadow-md
-                      transition-all
-                      duration-500
-                      hover:-translate-y-3
-                      hover:shadow-2xl
-                    "
-                  >
-                    {/* Icon */}
-                    <Zoom duration={800} triggerOnce>
-                      <div
-                        className="
-                          mb-6
-                          flex
-                          h-16
-                          w-16
-                          items-center
-                          justify-center
-                          rounded-2xl
-                          bg-[#f8efe5]
-                          transition-all
-                          duration-500
-                          group-hover:bg-[#d97706]
-                        "
-                      >
-                        <Icon
-                          className="
-                            text-[#d97706]
-                            transition-colors
-                            duration-500
-                            group-hover:text-white
-                          "
-                          size={34}
-                          strokeWidth={1.8}
-                        />
-                      </div>
-                    </Zoom>
+                 <div
+  key={service.id}
+  className="
+    group
+    flex
+    h-full
+    flex-col
+    rounded-3xl
+    bg-white
+    p-8
+    shadow-md
+    transition-all
+    duration-500
+    hover:-translate-y-3
+    hover:shadow-2xl
+  "
+>
+  {/* Icon */}
+  <Zoom duration={700} triggerOnce>
+    <div
+      className="
+        mb-6
+        flex
+        h-16
+        w-16
+        items-center
+        justify-center
+        rounded-2xl
+        bg-[#f8efe5]
+        transition-all
+        duration-500
+        group-hover:bg-[#d97706]
+      "
+    >
+      <Icon
+        className="
+          text-[#d97706]
+          transition-colors
+          duration-500
+          group-hover:text-white
+        "
+        size={34}
+        strokeWidth={1.8}
+      />
+    </div>
+  </Zoom>
 
-                    <h3 className="font-serif text-2xl uppercase leading-tight text-[#3b2417]">
-                      {service.title}
-                    </h3>
+ <Slide direction="up" triggerOnce duration={700}>
+  <h3 className="font-serif text-2xl uppercase leading-tight text-[#3b2417]">
+    {service.title}
+  </h3>
+</Slide>
 
-                    <p className="mt-4 flex-grow leading-7 text-gray-600">
-                      {service.description}
-                    </p>
+<Fade triggerOnce delay={150} duration={900}>
+  <p className="mt-4 flex-grow leading-7 text-gray-600">
+    {service.description}
+  </p>
+</Fade>
 
-                    <div className="mt-8 border-t border-gray-100 pt-6">
-                      <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-                        Starting From
-                      </p>
+<Zoom triggerOnce delay={250} duration={600}>
+  <div className="mt-8 border-t border-gray-100 pt-6">
+    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+      Starting From
+    </p>
 
-                      <div className="mt-2 flex items-end gap-2">
-                        <span className="text-4xl font-bold text-[#d97706]">
-                          $250
-                        </span>
+    <div className="mt-2 flex items-end gap-2">
+      <span className="text-4xl font-bold text-[#d97706]">$250</span>
+      <span className="pb-1 text-gray-500">/ hour</span>
+    </div>
+  </div>
+</Zoom>
 
-                        <span className="pb-1 text-gray-500">/ hour</span>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={() => openBooking(service.id)}
-                      className="
-                        mt-8
-                        rounded-lg
-                        border
-                        border-[#d8c4ad]
-                        px-8
-                        py-3
-                        text-sm
-                        font-semibold
-                        uppercase
-                        tracking-[0.15em]
-                        text-[#3b2417]
-                        transition-all
-                        duration-500
-                        hover:border-[#d97706]
-                        hover:bg-[#d97706]
-                        hover:text-white
-                      "
-                    >
-                      Book Now
-                    </button>
-                  </div>
-                </Slide>
+  <button
+    onClick={() => openBooking(service.id)}
+    className="
+      mt-8
+      rounded-lg
+      border
+      border-[#d8c4ad]
+      px-8
+      py-3
+      text-sm
+      font-semibold
+      uppercase
+      tracking-[0.15em]
+      text-[#3b2417]
+      transition-all
+      duration-500
+      hover:border-[#d97706]
+      hover:bg-[#d97706]
+      hover:text-white
+    "
+  >
+    Book Now
+  </button>
+</div>
+               
               );
             })}
           </div>

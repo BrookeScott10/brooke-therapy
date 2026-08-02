@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const gallery = [
   "/images/brok.jpg",
-  "/images/brok1.jpg",
+  "/images/new.jpg",
   "/images/brok2.jpg",
   "/images/brok3.jpg",
 ];

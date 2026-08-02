@@ -259,6 +259,93 @@ export const reviews: Review[] = [
     verified: false,
      image: "/reviews/Brian.jpg",
   },
+    
+  {
+    id: 24,
+    name: "Aaron R",
+    initials: "AR",
+    date: "2026-07-23",
+    review:
+      "Really enjoyed my session. Brooke was very nice and made me feel comfortable.",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Aaron.jpg",
+  },
+
+  {
+    id: 25,
+    name: "Jason T",
+    initials: "JT",
+    date: "2026-08-01",
+    review:
+      "I booked pretty late but everything went smooth. definitely becoming a regular.",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Jason.jpg",
+  },
+
+  {
+    id: 26,
+    name: "Michelle ",
+    initials: "MT",
+    date: "2026-07-10",
+    review:
+      "She was friendly and professional. Had a really good experience overall.",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Michelle.jpg",
+  },
+
+
+
+  {
+    id: 27,
+    name: "Weston ",
+    initials: "MT",
+    date: "2026-07-20",
+    review:
+      "Relaxing and exactly what I needed, thank you Brooke.",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Weston.jpg",
+  },
+
+  {
+    id: 28,
+    name: "Christian ",
+    initials: "MT",
+    date: "2026-07-12",
+    review:
+      "I was a little nervous being a first timer but she honestly made it easy. Great experience.",
+    rating: 5,
+    verified: false,
+    //  image: "/reviews/Weston.jpg",
+  },
+
+
+    
+  {
+    id: 29,
+    name: "Robert Lewis ",
+    initials: "RL",
+    date: "2026-07-25",
+    review:
+      "Everything was easy from booking to the session. She’s really sweet and easy to talk to.",
+    rating: 5,
+    verified: false,
+    //  image: "/reviews/Weston.jpg",
+  },
+  {
+    id: 30,
+    name: " Lizzy K",
+    initials: "LK",
+    date: "2026-07-4",
+    review:
+      " Had a great time. Very comfortable atmosphere and she was really nice. Will book again",
+    rating: 5,
+    verified: false,
+     image: "/reviews/Lizzy.jpg",
+  },
 
 
 
