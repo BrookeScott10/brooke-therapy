@@ -38,13 +38,13 @@ export default function Gallery() {
                 y: -8,
                 scale: 1.03,
               }}
-              className="aspect-square overflow-hidden rounded-2xl"
+              className=" h-auto overflow-hidden rounded-2xl"
             >
               <Image
                 src={image}
                 alt={`Gallery ${index + 1}`}
                 width={500}
-                height={500}
+                height={900}
                 className="h-full w-full object-cover transition duration-500 hover:scale-110"
               />
             </motion.div>
