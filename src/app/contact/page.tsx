@@ -69,7 +69,7 @@ export default function ContactPage() {
     {
       icon: Phone,
       title: "Call Us",
-      details: ["+1 (615) 432-7943"],
+      details: ["+1 (615) 540-5437"],
     },
     {
       icon: Mail,

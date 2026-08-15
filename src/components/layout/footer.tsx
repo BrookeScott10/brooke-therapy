@@ -83,7 +83,7 @@ export default function Footer() {
             <h4 className="font-serif text-lg mb-4">Contact Us</h4>
             <ul className="space-y-2 text-spa-cream/70 text-sm">
               <li>Available for both Incall & Outcall</li>
-              <li>+1 (615) 432-7943</li>
+              <li>+1 (615) 540-5437</li>
               <li>sdbrooke1005@gmail.com</li>
             </ul>
           </div>
