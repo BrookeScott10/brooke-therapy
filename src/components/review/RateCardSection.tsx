@@ -11,8 +11,20 @@ import {
 } from "lucide-react";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
 import BookingModal from "../booking/booking-modal";
+import SpecialServiceModal from "../booking/special-service-modal";
 
 const services = [
+  {
+    id: "special-service",
+    title: "SPECIAL SERVICE",
+    icon: Sparkles,
+    description: "Special service description",
+    prices: [
+      { duration: "60 Minutes", price: 350 },
+      { duration: "90 Minutes", price: 400 },
+      { duration: "120 Minutes", price: 500 },
+    ],
+  },
   {
     id: "swedish",
     title: "SWEDISH MASSAGE",
@@ -53,27 +65,22 @@ const services = [
     title: "NURU MASSAGE",
     icon: Sparkles,
     description:
-      "A luxurious body-to-body massage designed for a deeply relaxing experience.",
-  },
-  {
-    id: "gfs",
-    title: "NURU + GFE & FS",
-    icon: Sparkles,
-    description: "Full service with no restrictions",
-    prices: [
-      { duration: "60 Minutes", price: 350 },
-      { duration: "90 Minutes", price: 400 },
-      { duration: "120 Minutes", price: 500 },
-    ],
+      "A luxurious massage designed for a deeply relaxing experience.",
   },
 ];
 
 export default function RateCardSection() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
+  const [isSpecialModalOpen, setIsSpecialModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState("");
 
-  const openBooking = (service: string) => {
-    setSelectedBooking(service);
+  const openBooking = (serviceId: string) => {
+    if (serviceId === "special-service") {
+      setIsSpecialModalOpen(true);
+      return;
+    }
+
+    setSelectedBooking(serviceId);
     setIsBookingOpen(true);
   };
 
@@ -81,7 +88,6 @@ export default function RateCardSection() {
     <>
       <section className="overflow-hidden bg-[#c5d0ad] py-20">
         <div className="mx-auto max-w-7xl px-6">
-          {/* Header */}
           <Fade direction="up" duration={1200} triggerOnce>
             <div className="mb-14 text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.35em] text-[#c56a1f]">
@@ -99,9 +105,8 @@ export default function RateCardSection() {
             </div>
           </Fade>
 
-          {/* Cards */}
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => {
+          <div className="grid items-start gap-8 md:grid-cols-2 xl:grid-cols-3">
+            {services.map((service) => {
               const Icon = service.icon;
 
               return (
@@ -110,7 +115,6 @@ export default function RateCardSection() {
                   className="
                     group
                     flex
-                    h-full
                     flex-col
                     rounded-3xl
                     bg-white
@@ -122,7 +126,6 @@ export default function RateCardSection() {
                     hover:shadow-2xl
                   "
                 >
-                  {/* Icon */}
                   <Zoom duration={700} triggerOnce>
                     <div
                       className="
@@ -130,6 +133,7 @@ export default function RateCardSection() {
                         flex
                         h-16
                         w-16
+                        shrink-0
                         items-center
                         justify-center
                         rounded-2xl
@@ -152,22 +156,19 @@ export default function RateCardSection() {
                     </div>
                   </Zoom>
 
-                  {/* Title */}
                   <Slide direction="up" triggerOnce duration={700}>
                     <h3 className="font-serif text-2xl uppercase leading-tight text-[#3b2417]">
                       {service.title}
                     </h3>
                   </Slide>
 
-                  {/* Description */}
                   <Fade triggerOnce delay={150} duration={900}>
-                    <p className="mt-4 flex-grow leading-7 text-gray-600">
+                    <p className="mt-4 leading-7 text-gray-600">
                       {service.description}
                     </p>
                   </Fade>
 
-                  {/* Pricing */}
-                  {service.id === "gfs" ? (
+                  {service.id === "special-service" ? (
                     <Zoom triggerOnce delay={250} duration={600}>
                       <div className="mt-8 border-t border-gray-100 pt-6">
                         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
@@ -202,7 +203,7 @@ export default function RateCardSection() {
                     </Zoom>
                   ) : (
                     <Zoom triggerOnce delay={250} duration={600}>
-                      <div className="mt-8 border-t border-gray-100 pt-6">
+                      <div className="mt-8 border-t border-gray-100 pt-6 mt-36">
                         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
                           Starting From
                         </p>
@@ -218,11 +219,11 @@ export default function RateCardSection() {
                     </Zoom>
                   )}
 
-                  {/* Book Button */}
                   <button
                     onClick={() => openBooking(service.id)}
                     className="
                       mt-8
+                      w-full
                       rounded-lg
                       border
                       border-[#d8c4ad]
@@ -249,10 +250,17 @@ export default function RateCardSection() {
         </div>
       </section>
 
+      {/* Normal services */}
       <BookingModal
         isOpen={isBookingOpen}
         onClose={() => setIsBookingOpen(false)}
         defaultBooking={selectedBooking}
+      />
+
+      {/* Special service */}
+      <SpecialServiceModal
+        isOpen={isSpecialModalOpen}
+        onClose={() => setIsSpecialModalOpen(false)}
       />
     </>
   );

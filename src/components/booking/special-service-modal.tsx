@@ -7,30 +7,22 @@ import { Label } from "../ui/label";
 import { Input } from "../ui/input";
 import { useContact } from "@/hooks/use-contact";
 
+
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 const services = [
-  { id: "swedish-massage", name: "SWEDISH MASSAGE" },
-  { id: "deep-tissue-massage", name: "DEEP TISSUE MASSAGE" },
-  { id: "hot-stone-massage", name: "HOT STONE MASSAGE" },
-  { id: "sports-massage", name: "SPORTS MASSAGE" },
-  { id: "aromatherapy-massage", name: "AROMATHERAPY MASSAGE" },
-  { id: "nuru-massage", name: "NURU MASSAGE" },
+  { id: "nuru-gfs", name: "NURU + GFE & FS" },
 ];
 
 const bookingOptions = [
-  { id: "1-hour", duration: "1 HOUR", price: "$250.00" },
-  { id: "2-hours", duration: "2 HOURS", price: "$450.00" },
-  { id: "3-hours", duration: "3 HOURS", price: "$550.00" },
-  { id: "4-6-hours", duration: "4–6 HOURS", price: "$750.00" },
-  {
-    id: "10-12-hours",
-    duration: "10–12 HOURS (OVERNIGHT/DAY)",
-    price: "$1,000.00",
-  },
+  { id: "60 Minutes", duration: "60 Minutes", price: "$350.00" },
+  { id: "90 Minutes", duration: "90 Minutes", price: "$400.00" },
+  { id: "120 minutes", duration: "120 minutes", price: "$500.00" },
+ 
+  
 ];
 
 // ✅ FULL TIME FORMAT
@@ -46,7 +38,7 @@ const timeSlots = [
   "5:00PM",
 ];
 
-export default function BookingModal({ isOpen, onClose }: BookingModalProps) {
+export default function specialServiceModal({ isOpen, onClose }: BookingModalProps) {
   const [step, setStep] = useState(1);
 
   const [selectedService, setSelectedService] = useState("");
