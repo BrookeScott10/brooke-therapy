@@ -93,22 +93,7 @@ export default function HeroSection() {
     sm:justify-center
   "
           >
-            {/* Button 1 */}
-            <Slide direction="up" delay={900} duration={900} triggerOnce>
-              <Button
-                variant="outline"
-                onClick={() => setGiftCardOpen(true)}
-                className="w-full sm:w-auto   border
-                  border-white
-                  bg-spa-orange
-                    hover:bg-white
-                    hover:text-spa-brown
-                    text-white
-                  px-8 py-6 text-lg font-semibold rounded-lg"
-              >
-                Check Gift Card Balance
-              </Button>
-            </Slide>
+            
 
             {/* Button 2 */}
             <Slide direction="up" delay={1100} duration={900} triggerOnce>
@@ -132,6 +117,24 @@ export default function HeroSection() {
                   Payment Methods
                 </Button>
               </Link>
+            </Slide>
+
+
+            {/* Button 1 */}
+            <Slide direction="up" delay={900} duration={900} triggerOnce>
+              <Button
+                variant="outline"
+                onClick={() => setGiftCardOpen(true)}
+                className="w-full sm:w-auto   border
+                  border-white
+                  bg-spa-orange
+                    hover:bg-white
+                    hover:text-spa-brown
+                    text-white
+                  px-8 py-6 text-lg font-semibold rounded-lg"
+              >
+                Check Gift Card Balance
+              </Button>
             </Slide>
           </div>
         </div>

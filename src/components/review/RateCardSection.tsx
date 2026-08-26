@@ -1,7 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { Heart, Hand, Flame, Dumbbell, Flower2, Sparkles } from "lucide-react";
+import {
+  Heart,
+  Hand,
+  Flame,
+  Dumbbell,
+  Flower2,
+  Sparkles,
+} from "lucide-react";
 import { Fade, Slide, Zoom } from "react-awesome-reveal";
 import BookingModal from "../booking/booking-modal";
 
@@ -48,6 +55,17 @@ const services = [
     description:
       "A luxurious body-to-body massage designed for a deeply relaxing experience.",
   },
+  {
+    id: "gfs",
+    title: "NURU + GFE & FS",
+    icon: Sparkles,
+    description: "Full service with no restrictions",
+    prices: [
+      { duration: "60 Minutes", price: 350 },
+      { duration: "90 Minutes", price: 400 },
+      { duration: "120 Minutes", price: 500 },
+    ],
+  },
 ];
 
 export default function RateCardSection() {
@@ -61,7 +79,7 @@ export default function RateCardSection() {
 
   return (
     <>
-      <section className="bg-[#c5d0ad] py-20 overflow-hidden">
+      <section className="overflow-hidden bg-[#c5d0ad] py-20">
         <div className="mx-auto max-w-7xl px-6">
           {/* Header */}
           <Fade direction="up" duration={1200} triggerOnce>
@@ -87,103 +105,144 @@ export default function RateCardSection() {
               const Icon = service.icon;
 
               return (
-                 <div
-  key={service.id}
-  className="
-    group
-    flex
-    h-full
-    flex-col
-    rounded-3xl
-    bg-white
-    p-8
-    shadow-md
-    transition-all
-    duration-500
-    hover:-translate-y-3
-    hover:shadow-2xl
-  "
->
-  {/* Icon */}
-  <Zoom duration={700} triggerOnce>
-    <div
-      className="
-        mb-6
-        flex
-        h-16
-        w-16
-        items-center
-        justify-center
-        rounded-2xl
-        bg-[#f8efe5]
-        transition-all
-        duration-500
-        group-hover:bg-[#d97706]
-      "
-    >
-      <Icon
-        className="
-          text-[#d97706]
-          transition-colors
-          duration-500
-          group-hover:text-white
-        "
-        size={34}
-        strokeWidth={1.8}
-      />
-    </div>
-  </Zoom>
+                <div
+                  key={service.id}
+                  className="
+                    group
+                    flex
+                    h-full
+                    flex-col
+                    rounded-3xl
+                    bg-white
+                    p-8
+                    shadow-md
+                    transition-all
+                    duration-500
+                    hover:-translate-y-3
+                    hover:shadow-2xl
+                  "
+                >
+                  {/* Icon */}
+                  <Zoom duration={700} triggerOnce>
+                    <div
+                      className="
+                        mb-6
+                        flex
+                        h-16
+                        w-16
+                        items-center
+                        justify-center
+                        rounded-2xl
+                        bg-[#f8efe5]
+                        transition-all
+                        duration-500
+                        group-hover:bg-[#d97706]
+                      "
+                    >
+                      <Icon
+                        className="
+                          text-[#d97706]
+                          transition-colors
+                          duration-500
+                          group-hover:text-white
+                        "
+                        size={34}
+                        strokeWidth={1.8}
+                      />
+                    </div>
+                  </Zoom>
 
- <Slide direction="up" triggerOnce duration={700}>
-  <h3 className="font-serif text-2xl uppercase leading-tight text-[#3b2417]">
-    {service.title}
-  </h3>
-</Slide>
+                  {/* Title */}
+                  <Slide direction="up" triggerOnce duration={700}>
+                    <h3 className="font-serif text-2xl uppercase leading-tight text-[#3b2417]">
+                      {service.title}
+                    </h3>
+                  </Slide>
 
-<Fade triggerOnce delay={150} duration={900}>
-  <p className="mt-4 flex-grow leading-7 text-gray-600">
-    {service.description}
-  </p>
-</Fade>
+                  {/* Description */}
+                  <Fade triggerOnce delay={150} duration={900}>
+                    <p className="mt-4 flex-grow leading-7 text-gray-600">
+                      {service.description}
+                    </p>
+                  </Fade>
 
-<Zoom triggerOnce delay={250} duration={600}>
-  <div className="mt-8 border-t border-gray-100 pt-6">
-    <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-      Starting From
-    </p>
+                  {/* Pricing */}
+                  {service.id === "gfs" ? (
+                    <Zoom triggerOnce delay={250} duration={600}>
+                      <div className="mt-8 border-t border-gray-100 pt-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+                          Pricing
+                        </p>
 
-    <div className="mt-2 flex items-end gap-2">
-      <span className="text-4xl font-bold text-[#d97706]">$250</span>
-      <span className="pb-1 text-gray-500">/ hour</span>
-    </div>
-  </div>
-</Zoom>
+                        <div className="mt-4 space-y-3">
+                          {service.prices.map((option) => (
+                            <div
+                              key={option.duration}
+                              className="
+                                flex
+                                items-center
+                                justify-between
+                                rounded-xl
+                                bg-[#faf8f5]
+                                px-4
+                                py-3
+                              "
+                            >
+                              <span className="text-sm font-medium text-gray-600">
+                                {option.duration}
+                              </span>
 
-  <button
-    onClick={() => openBooking(service.id)}
-    className="
-      mt-8
-      rounded-lg
-      border
-      border-[#d8c4ad]
-      px-8
-      py-3
-      text-sm
-      font-semibold
-      uppercase
-      tracking-[0.15em]
-      text-[#3b2417]
-      transition-all
-      duration-500
-      hover:border-[#d97706]
-      hover:bg-[#d97706]
-      hover:text-white
-    "
-  >
-    Book Now
-  </button>
-</div>
-               
+                              <span className="text-lg font-bold text-[#d97706]">
+                                ${option.price}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </Zoom>
+                  ) : (
+                    <Zoom triggerOnce delay={250} duration={600}>
+                      <div className="mt-8 border-t border-gray-100 pt-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+                          Starting From
+                        </p>
+
+                        <div className="mt-2 flex items-end gap-2">
+                          <span className="text-4xl font-bold text-[#d97706]">
+                            $250
+                          </span>
+
+                          <span className="pb-1 text-gray-500">/ hour</span>
+                        </div>
+                      </div>
+                    </Zoom>
+                  )}
+
+                  {/* Book Button */}
+                  <button
+                    onClick={() => openBooking(service.id)}
+                    className="
+                      mt-8
+                      rounded-lg
+                      border
+                      border-[#d8c4ad]
+                      px-8
+                      py-3
+                      text-sm
+                      font-semibold
+                      uppercase
+                      tracking-[0.15em]
+                      text-[#3b2417]
+                      transition-all
+                      duration-500
+                      hover:border-[#d97706]
+                      hover:bg-[#d97706]
+                      hover:text-white
+                    "
+                  >
+                    Book Now
+                  </button>
+                </div>
               );
             })}
           </div>

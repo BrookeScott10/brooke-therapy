@@ -19,13 +19,15 @@ const services = [
   { id: "sports-massage", name: "SPORTS MASSAGE" },
   { id: "aromatherapy-massage", name: "AROMATHERAPY MASSAGE" },
   { id: "nuru-massage", name: "NURU MASSAGE" },
+  { id: "nuru-gfs", name: "NURU + GFE & FS" },
 ];
 
 const bookingOptions = [
-  { id: "1-hour", duration: "1 HOUR", price: "$250.00" },
-  { id: "2-hours", duration: "2 HOURS", price: "$450.00" },
-  { id: "3-hours", duration: "3 HOURS", price: "$550.00" },
-  { id: "4-6-hours", duration: "4–6 HOURS", price: "$750.00" },
+  { id: "90-minutes", duration: "NURU + GFE + FS (Full Service)", price: "$350.00" },
+  { id: "4-hour", duration: "1 HOUR", price: "$250.00" },
+  { id: "5-hours", duration: "2 HOURS", price: "$450.00" },
+  { id: "6-hours", duration: "3 HOURS", price: "$550.00" },
+  { id: "7-8-hours", duration: "4–6 HOURS", price: "$750.00" },
   {
     id: "10-12-hours",
     duration: "10–12 HOURS (OVERNIGHT/DAY)",
