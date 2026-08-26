@@ -348,5 +348,97 @@ export const reviews: Review[] = [
   },
 
 
+  {
+    id: 31,
+    name: "Charles",
+    initials: "C",
+    date: "2026-08-26",
+    review:
+      " Booked late on a whim and it still worked out perfectly. Brooke made the whole thing super chill.",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+  
+
+
+  {
+    id: 32,
+    name: " Megan M",
+    initials: "MM",
+    date: "2026-08-20",
+    review:
+      "First time trying something like this and she put me at ease right away. Booking was straightforward too.",
+    rating: 5,
+    verified: true,
+     image: "/reviews/Megan.jpg",
+  },
+
+  {
+    id: 33,
+    name: "Oscar Juarez",
+    initials: "OJ",
+    date: "2026-08-18",
+    review:
+      " Smooth process from start to finish. Brooke’s genuine and easygoing — conversation just flowed. ",
+    rating: 5,
+    verified: false,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+  {
+    id: 34,
+    name: " Joe L",
+    initials: "JL",
+    date: "2026-08-15",
+    review:
+      "Was a bit nervous going in but she was really welcoming.",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+
+
+
+  {
+    id: 35,
+    name: " Edger Cooper",
+    initials: "EC",
+    date: "2026-08-22",
+    review:
+      " Definitely scheduling another one soon.",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+  {
+    id: 36,
+    name: " Barbara",
+    initials: "B",
+    date: "2026-08-5",
+    review:
+      " Late booking but no issues at all. She’s sweet, professional, and just easy to be around. Solid session.",
+    rating: 5,
+    verified: false,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+
+  {
+    id: 37,
+    name: " Barbara",
+    initials: "AT",
+    date: "2026-08-10",
+    review:
+      " Really positive vibe from the start. Booking was quick and Brooke was friendly and made the whole thing relaxed. Looking forward to the next one.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Lizzy.jpg",
+  },
+
+
 
 ];

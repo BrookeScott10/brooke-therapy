@@ -57,7 +57,7 @@ export default function Header() {
               <span
                 className={`font-serif text-base sm:text-lg lg:text-xl font-semibold truncate ${getTextColor()}`}
               >
-                Massage Therapy by Brooke
+              Therapy by Brooke
               </span>
             </Link>
 

@@ -117,7 +117,7 @@ export default function RateCardSection() {
           </Fade>
 
           {/* Cards */}
-          <div className="grid items-stretch gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {services.map((service) => {
               const Icon = service.icon;
 
@@ -127,8 +127,8 @@ export default function RateCardSection() {
                   className="
                     group
                     flex
-                    h-full
                     flex-col
+                    self-start
                     rounded-3xl
                     bg-white
                     p-8
@@ -240,21 +240,19 @@ export default function RateCardSection() {
                     </Zoom>
                   ) : (
                     <Zoom triggerOnce delay={250} duration={600}>
-                      <div className="mt-auto pt-8">
-                        <div className="border-t border-gray-100 pt-6 mt-36">
-                          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-                            Starting From
-                          </p>
+                      <div className="mt-8 border-t border-gray-100 pt-6">
+                        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+                          Starting From
+                        </p>
 
-                          <div className="mt-2 flex items-end gap-2">
-                            <span className="text-4xl font-bold text-[#d97706]">
-                              $250
-                            </span>
+                        <div className="mt-2 flex items-end gap-2">
+                          <span className="text-4xl font-bold text-[#d97706]">
+                            $250
+                          </span>
 
-                            <span className="pb-1 text-gray-500">
-                              / hour
-                            </span>
-                          </div>
+                          <span className="pb-1 text-gray-500">
+                            / hour
+                          </span>
                         </div>
                       </div>
                     </Zoom>

@@ -17,10 +17,10 @@ export default function HeroSection() {
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('/images/broke5.jpg')",
+            backgroundImage: "url('/images/heroimg.jpg')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/70 to-spa-brown/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/10 to-spa-brown/50" />
         </div>
 
         {/* Content */}
@@ -34,7 +34,7 @@ export default function HeroSection() {
             w-full
             mx-auto
             px-4
-
+            pt-[350px]
             items-center
             text-center
           "
@@ -63,25 +63,23 @@ export default function HeroSection() {
           <Fade delay={400} duration={1200} direction="up" triggerOnce>
             <p
               className="
-                mt-8
+                mt-2
                 max-w-3xl
                 text-spa-cream/90
-                text-xl
-                md:text-2xl
-                leading-9
+                text-lg
+                md:text-xl
+                leading-6
                 md:mx-auto
               "
             >
-              The pure sensation. Your expert therapeutic massage therapist
-              uniquely skilled to help bring the entire mind, body and wellness
-              awareness to life. Treating you with each session.
+             "Expert therapeutic massage to restore your mind, body, and wellness.
             </p>
           </Fade>
 
           {/* Buttons */}
           <div
             className="
-    mt-12
+    mt-6
     flex
     flex-col
     gap-4
