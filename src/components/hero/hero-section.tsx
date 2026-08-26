@@ -35,6 +35,8 @@ export default function HeroSection() {
             mx-auto
             px-4
             pt-[350px]
+            lg:pt-[450px]
+            md:pt-[700px]
             items-center
             text-center
           "
