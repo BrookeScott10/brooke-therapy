@@ -20,7 +20,7 @@ export default function HeroSection() {
             backgroundImage: "url('/images/heroimg.jpg')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/10 to-spa-brown/50" />
+          <div className="absolute inset-0 bg-gradient-to-r from-spa-sage-dark/15 to-spa-brown/10" />
         </div>
 
         {/* Content */}
