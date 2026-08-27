@@ -357,7 +357,7 @@ export const reviews: Review[] = [
       " Booked late on a whim and it still worked out perfectly. Brooke made the whole thing super chill.",
     rating: 5,
     verified: true,
-    //  image: "/reviews/Lizzy.jpg",
+     image: "/reviews/Charles.jpg",
   },
 
   
@@ -384,7 +384,7 @@ export const reviews: Review[] = [
       " Smooth process from start to finish. Brooke’s genuine and easygoing — conversation just flowed. ",
     rating: 5,
     verified: false,
-    //  image: "/reviews/Lizzy.jpg",
+    //  image: "/reviews/Oscar.jpg",
   },
 
   {
@@ -429,14 +429,14 @@ export const reviews: Review[] = [
 
   {
     id: 37,
-    name: " Barbara",
+    name: "Andrew Teyer",
     initials: "AT",
     date: "2026-08-10",
     review:
       " Really positive vibe from the start. Booking was quick and Brooke was friendly and made the whole thing relaxed. Looking forward to the next one.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
     rating: 5,
     verified: true,
-    //  image: "/reviews/Lizzy.jpg",
+     image: "/reviews/Andrew.jpg",
   },
 
 
