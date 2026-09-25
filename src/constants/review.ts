@@ -440,5 +440,96 @@ export const reviews: Review[] = [
   },
 
 
+  {
+    id: 38,
+    name: "Wilson",
+    initials: "W",
+    date: "2026-09-10",
+    review:
+      "Everything matched her description perfectly. One of the better experiences I’ve had.​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Wilson.jpeg",
+  },
+
+  {
+    id: 39,
+    name: "Tom",
+    initials: "T",
+    date: "2026-09-15",
+    review:
+      "She was warm, affectionate, and made everything feel comfortable.​",
+    rating: 5,
+    verified: true,
+    //  image: "/reviews/Andrew.jpeg",
+  },
+  
+
+
+  {
+    id: 40,
+    name: "Tim",
+    initials: "T",
+    date: "2026-09-20",
+    review:
+      "Only minor downside was she had to leave a bit earlier than planned, but still worth it.​",
+    // rating: 5,
+    verified: true,
+     image: "/reviews/Tim.jpeg",
+  },
+
+
+
+  {
+    id: 41,
+    name: "George",
+    initials: "G",
+    date: "2026-09-22",
+    review:
+      "Very playful personality, arrived on time, and made the evening enjoyable from start to finish.​",
+    rating: 4.5,
+    verified: false,
+    //  image: "/reviews/Andrew.jpeg",
+  },
+
+   
+
+  {
+    id: 42,
+    name: "Lucas",
+    initials: "L",
+    date: "2026-09-22",
+    review:
+      "She looked even better in person than her photos.​",
+    rating: 5,
+    verified: true,
+     image: "/reviews/Lucas.jpeg",
+  },
+
+  
+
+  {
+    id: 43,
+    name: "Jay Will",
+    initials: "JW",
+    date: "2026-09-24",
+    review:
+      "Super friendly, great conversation, and the whole experience felt natural and relaxed. Highly recommend if you’re looking for someone classy and attentive.",
+    rating: 5,
+    verified: true,
+     image: "/reviews/Jay-Will.jpeg",
+  },
+
+  
+
+
+
+
+
+
+
+
+
+
 
 ];
