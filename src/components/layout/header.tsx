@@ -31,6 +31,7 @@ export default function Header() {
     // { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
     { name: "Check Gift Card Balance", href: "/gift-card-balance" },
+    { name: "Certification", href: "/certification" },
   ];
 
   const getTextColor = () => {
