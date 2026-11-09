@@ -7,6 +7,8 @@ import QueryProvider from "../providers/query-provider";
 import { Toaster } from "sonner";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import { TawkChat } from "@/components/tawk-chat";
+
 
 const _playfair = Playfair_Display({
   subsets: ["latin"],
@@ -53,6 +55,7 @@ export default function RootLayout({
           <Footer />
         </QueryProvider>
         <Analytics />
+        <TawkChat />
       </body>
     </html>
   );
