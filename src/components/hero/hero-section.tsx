@@ -74,7 +74,8 @@ export default function HeroSection() {
                 md:mx-auto
               "
             >
-             "Expert therapeutic massage to restore your mind, body, and wellness.
+              "Expert therapeutic massage to restore your mind, body, and
+              wellness.
             </p>
           </Fade>
 
@@ -88,13 +89,11 @@ export default function HeroSection() {
     w-full
     items-stretch
     sm:flex-row
-    sm:w-auto
+    sm:flex-wrap
     sm:items-center
     sm:justify-center
   "
           >
-            
-
             {/* Button 2 */}
             <Slide direction="up" delay={1100} duration={900} triggerOnce>
               <Link href="#reviews" className="w-full sm:w-auto">
@@ -119,7 +118,6 @@ export default function HeroSection() {
               </Link>
             </Slide>
 
-
             {/* Button 1 */}
             <Slide direction="up" delay={900} duration={900} triggerOnce>
               <Button
@@ -134,6 +132,22 @@ export default function HeroSection() {
                   px-8 py-6 text-lg font-semibold rounded-lg"
               >
                 Check Gift Card Balance
+              </Button>
+            </Slide>
+
+            <Slide direction="up" delay={1100} duration={900} triggerOnce>
+              <Button
+                asChild
+                variant="outline"
+                className="w-full sm:w-auto border
+      border-white
+      bg-spa-orange
+      hover:bg-white
+      hover:text-spa-brown
+      text-white
+      px-8 py-6 text-lg font-semibold rounded-lg"
+              >
+                <Link href="/certification">Certification</Link>
               </Button>
             </Slide>
           </div>
